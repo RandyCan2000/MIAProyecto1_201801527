@@ -6,6 +6,7 @@ import (
 	Parser "Proyecto1MIA/Analizador"
 	"bufio"
 	"os"
+	"os/exec"
 	"strings"
 
 	"github.com/github.com/mitchellh/colorstring"
@@ -20,7 +21,7 @@ const (
 )
 
 func main() {
-
+	//SuperUsuarios()
 	reader := bufio.NewReader(os.Stdin)
 	var Script string = ""
 	var LineNew [2]string
@@ -56,5 +57,15 @@ func main() {
 				colorstring.Println("[red] verifique que el script se encuentre escrito correctamente")
 			}
 		}
+	}
+}
+
+func SuperUsuarios() {
+	app := "sudo"
+	arg0 := "su"
+	cmd := exec.Command(app, arg0)
+	err := cmd.Run()
+	if err != nil {
+		colorstring.Println("[red]No se pudo inicir sesion como super usuario")
 	}
 }

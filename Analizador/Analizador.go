@@ -81,11 +81,67 @@ func Parser(Comando string) bool {
 		//TODO borrar println
 		colorstring.Println("[red]" + path + " " + size + " " + unit + " " + name)
 		return Code.MKDISK(path, size, name, unit)
+	} else if strings.ToUpper(SourceSplit[i]) == "RMDISK" {
+		var path string = ""
+		for _, value := range SourceSplit {
+			contain := strings.Contains(strings.ToUpper(value), "-PATH")
+			if contain == true {
+				path = strings.TrimSpace(strings.Split(value, "->")[1])
+			}
+		}
+		//TODO borrar println
+		colorstring.Println("[red]" + path)
+		return Code.RMDISK(path)
+	} else if strings.ToUpper(SourceSplit[i]) == "FDISK" {
+		var path, size, unit, tipe, fit, delete, name, add string = "", "", "", "", "", "", "", ""
+		contain := false
+		for _, value := range SourceSplit {
+			contain = strings.Contains(strings.ToUpper(value), "-PATH")
+			if contain == true {
+				path = strings.TrimSpace(strings.Split(value, "->")[1])
+			}
+			contain = strings.Contains(strings.ToUpper(value), "-SIZE")
+			if contain == true {
+				size = strings.TrimSpace(strings.Split(value, "->")[1])
+				if isNumeric(size) == false {
+					colorstring.Println("[red]Size debe ser numero y mayor a cero")
+					return false
+				}
+			}
+			contain = strings.Contains(strings.ToUpper(value), "-UNIT")
+			if contain == true {
+				unit = strings.TrimSpace(strings.Split(value, "->")[1])
+			}
+			contain = strings.Contains(strings.ToUpper(value), "-TYPE")
+			if contain == true {
+				tipe = strings.TrimSpace(strings.Split(value, "->")[1])
+			}
+			contain = strings.Contains(strings.ToUpper(value), "-FIT")
+			if contain == true {
+				fit = strings.TrimSpace(strings.Split(value, "->")[1])
+			}
+			contain = strings.Contains(strings.ToUpper(value), "-DELETE")
+			if contain == true {
+				delete = strings.TrimSpace(strings.Split(value, "->")[1])
+			}
+			contain = strings.Contains(strings.ToUpper(value), "-NAME")
+			if contain == true {
+				name = strings.TrimSpace(strings.Split(value, "->")[1])
+			}
+			contain = strings.Contains(strings.ToUpper(value), "-ADD")
+			if contain == true {
+				add = strings.TrimSpace(strings.Split(value, "->")[1])
+			}
+		}
+		//TODO borrar PRINT
+		colorstring.Println("[red]" + path + "" + size + "" + unit + "" + tipe + "" + fit + "" + delete + "" + name + "" + add)
+		return Code.FDISK(path, size, unit, tipe, fit, delete, name, add)
+		return true
 	} else {
 		colorstring.Println("[red]El Script No existe")
 		return false
 	}
-}  
+}
 
 //Para hacer Split parametro Spliter tomando en cuanta que entre comillas este spliter se ignora
 func Split(Comando string, Spliter string) []string {
@@ -131,7 +187,7 @@ func Split(Comando string, Spliter string) []string {
 	return SoursesSplited
 }
 
-func isNumeric(valor string) bool {
+func isNumeric(valor string) bool { //Verifica si es mayor a 0 y si es un numero retorna false si no cumple alguna de las condiciones
 	Numero, err := strconv.Atoi(valor)
 	if err != nil {
 		return false
@@ -143,6 +199,7 @@ func isNumeric(valor string) bool {
 }
 
 func Name(name string) bool {
+	name = removeCom(name)
 	name2 := strings.Split(name, ".")
 	if name2[1] != "dsk" {
 		colorstring.Println("[red]name debe ser extension .dsk")
@@ -162,4 +219,16 @@ func Name(name string) bool {
 		}
 	}
 	return true
+}
+
+func removeCom(name string) string {
+	if strings.TrimSpace(string(name[0])) == "\"" {
+		name2 := strings.TrimSpace(strings.Split(name, "\"")[1])
+		name = name2
+	}
+	if strings.TrimSpace(string(name[0])) == "'" {
+		name2 := strings.TrimSpace(strings.Split(name, "'")[1])
+		name = name2
+	}
+	return name
 }
