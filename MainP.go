@@ -9,6 +9,11 @@ import (
 	"unsafe"
 )
 
+type Prueba struct {
+	Numero  int
+	Numero2 int
+}
+
 func main() {
 	writeFile()
 }

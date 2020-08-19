@@ -21,7 +21,6 @@ const (
 )
 
 func main() {
-	//SuperUsuarios()
 	reader := bufio.NewReader(os.Stdin)
 	var Script string = ""
 	var LineNew [2]string

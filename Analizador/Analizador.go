@@ -1,8 +1,5 @@
-//Paquete que contiene el parser de la consola
-package Analizador
+package analizador
 
-//Mkdisk -size->16 -path->"/home/randy/adios/OtroDisco" -NaMe->Disco4.dsk -uniT->M
-//Mkdisk -size->l -path->"/home/mis discos/" -NaMe->Disco4.dsk -uniT->k
 import (
 	Code "Proyecto1MIA/Comandos"
 	"os"
@@ -15,14 +12,15 @@ import (
 )
 
 //fmt.Printf("\033[1;34m%s\033[0m", "Info")
-//colorstring.Println("[blue]Hello [red]World!")
 
-//Parser: Recibe una linea de comandos y la analiza
+//Parser Recibe una linea de comandos y la analiza
 func Parser(Comando string) bool {
 	var SourceSplit []string = Split(Comando, " ")
 	//  {key}, {Value}
 	i := 0
-	if strings.ToUpper(strings.TrimSpace(Comando)) == "PAUSE" {
+	if strings.ToUpper(strings.TrimSpace(Comando)) == "MOUNT" {
+		return Code.MOUNT("", "")
+	} else if strings.ToUpper(strings.TrimSpace(Comando)) == "PAUSE" {
 		colorstring.Println("[yellow]Presione cualquier tecla para salir del modo pausa")
 		_, _, err := keyboard.GetSingleKey()
 		if err != nil {
@@ -126,7 +124,7 @@ func Parser(Comando string) bool {
 			}
 			contain = strings.Contains(strings.ToUpper(value), "-NAME")
 			if contain == true {
-				name = strings.TrimSpace(strings.Split(value, "->")[1])
+				name = removeCom(strings.TrimSpace(strings.Split(value, "->")[1]))
 			}
 			contain = strings.Contains(strings.ToUpper(value), "-ADD")
 			if contain == true {
@@ -137,13 +135,38 @@ func Parser(Comando string) bool {
 		colorstring.Println("[red]" + path + "" + size + "" + unit + "" + tipe + "" + fit + "" + delete + "" + name + "" + add)
 		return Code.FDISK(path, size, unit, tipe, fit, delete, name, add)
 		return true
+	} else if strings.ToUpper(SourceSplit[i]) == "MOUNT" {
+		var path, name string = "", ""
+		for _, value := range SourceSplit {
+			contain := strings.Contains(strings.ToUpper(value), "-PATH")
+			if contain == true {
+				path = removeCom(strings.TrimSpace(strings.Split(value, "->")[1]))
+			}
+			contain = strings.Contains(strings.ToUpper(value), "-NAME")
+			if contain == true {
+				name = removeCom(strings.TrimSpace(strings.Split(value, "->")[1]))
+			}
+		}
+		return Code.MOUNT(strings.TrimSpace(path), strings.ToUpper(strings.TrimSpace(name)))
+	} else if strings.ToUpper(SourceSplit[i]) == "UNMOUNT" {
+		var id []string
+		for _, value := range SourceSplit {
+			contain := strings.Contains(strings.ToUpper(value), "-ID")
+			if contain == true {
+				id = append(id, removeCom(strings.TrimSpace(strings.Split(value, "->")[1])))
+			}
+		}
+		if len(id) == 0 {
+			return false
+		}
+		return Code.UNMOUNT(id)
 	} else {
 		colorstring.Println("[red]El Script No existe")
 		return false
 	}
 }
 
-//Para hacer Split parametro Spliter tomando en cuanta que entre comillas este spliter se ignora
+//Split parametro Spliter tomando en cuanta que entre comillas este spliter se ignora
 func Split(Comando string, Spliter string) []string {
 	var SoursesSplited []string
 	var Source string = ""
@@ -198,6 +221,7 @@ func isNumeric(valor string) bool { //Verifica si es mayor a 0 y si es un numero
 	return true
 }
 
+//Name valida que el name este correcto
 func Name(name string) bool {
 	name = removeCom(name)
 	name2 := strings.Split(name, ".")
