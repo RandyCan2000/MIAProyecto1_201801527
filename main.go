@@ -3,7 +3,8 @@ package main
 //al descargar del repositorio instalar //go get -u github.com/eiannone/keyboard
 //go get github.com/mitchellh/colorstring
 import (
-	Parser "Proyecto1MIA/Analizador"
+	Parser "Proyecto1MIA/Comandos"
+
 	"bufio"
 	"os"
 	"os/exec"
@@ -21,6 +22,8 @@ const (
 )
 
 func main() {
+	//Grafica.TreeComplete("/home/randy/Escritorio/Discos/DCMBR.dsk", "png", "/home/randy/Escritorio/Discos/tabla.png", "PART1", true)
+	//Grafica.Disk("/home/randy/Escritorio/Discos/HOLA S.dsk", "png", "/home/randy/Escritorio/Discos/Hols.png")
 	reader := bufio.NewReader(os.Stdin)
 	var Script string = ""
 	var LineNew [2]string
@@ -32,8 +35,8 @@ func main() {
 		for {
 			input, _ := reader.ReadByte()
 			if string(input) == "\n" {
-				if LineNew[0] == "/" && LineNew[1] == "*" {
-					Script = strings.TrimSpace(strings.Split(Script, "/*")[0]) + " "
+				if LineNew[0] == "\\" && LineNew[1] == "*" {
+					Script = strings.TrimSpace(strings.Split(Script, "\\*")[0]) 
 				} else {
 					break
 				}
@@ -42,18 +45,17 @@ func main() {
 			}
 			LineNew[0] = LineNew[1]
 			LineNew[1] = string(input)
-			if LineNew[0] == "/" && LineNew[1] == "*" {
-				Script = strings.TrimSpace(strings.Split(Script, "/*")[0]) + " "
+			if LineNew[0] == "\\" && LineNew[1] == "*" {
+				Script = strings.TrimSpace(strings.Split(Script, "\\*")[0])
 			}
 		}
 		if Script == "" {
 			print()
 		} else {
-			println(Script) //TODO Eliminar esto luego
 			err := Parser.Parser(Script)
 			if err == false {
-				colorstring.Println("[red] Ocurrio un error al Ejecutar Script")
-				colorstring.Println("[red] verifique que el script se encuentre escrito correctamente")
+				colorstring.Println("[red]\tOcurrio un error al Ejecutar Script")
+				colorstring.Println("[red]\tverifique que el script se encuentre escrito correctamente")
 			}
 		}
 	}

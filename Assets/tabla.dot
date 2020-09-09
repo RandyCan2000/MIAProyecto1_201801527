@@ -1,0 +1,29 @@
+digraph g{
+node [shape=plain]
+		a0 [label=<
+ <TABLE>
+	<TR>
+		<TD colspan="5">BITACORA</TD>
+	</TR>
+  
+	<TR>
+	<TD >OPERACION</TD>
+	<TD >TIPO</TD>
+	<TD >NOMBRE</TD>
+	<TD >CONTENIDO</TD>
+	<TD >FECHA</TD>
+	</TR>
+  
+
+	<TR>
+	<TD></TD>
+	<TD></TD>
+	<TD></TD>
+	<TD></TD>
+	<TD></TD>
+	</TR>
+  
+</TABLE>
+>];
+
+}

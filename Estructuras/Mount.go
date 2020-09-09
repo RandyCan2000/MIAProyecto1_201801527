@@ -12,7 +12,8 @@ type Mount struct {
 }
 
 type MountFisic struct {
-	Id   string
-	Path string
-	Name string
+	Id     string
+	Path   string
+	Name   string
+	CopySB int64
 }

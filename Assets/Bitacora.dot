@@ -1,0 +1,338 @@
+digraph D {
+node [shape=plain]
+a0 [label=<<TABLE>
+<TR>
+	<TD colspan="5">BITACORA</TD>
+	</TR>
+	<TR>
+	<TD >OPERACION</TD>
+	<TD >TIPO</TD>
+	<TD >NOMBRE</TD>
+	<TD >CONTENIDO</TD>
+	<TD >FECHA</TD>
+	</TR>
+	<TR>
+			<TD>MKDIR</TD>
+			<TD>CARPETA</TD>
+			<TD>Carpeta1</TD>
+			<TD></TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKDIR</TD>
+			<TD>CARPETA</TD>
+			<TD>Carpeta2</TD>
+			<TD></TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKDIR</TD>
+			<TD>CARPETA</TD>
+			<TD>Carpeta3</TD>
+			<TD></TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKDIR</TD>
+			<TD>CARPETA</TD>
+			<TD>Carpeta4</TD>
+			<TD></TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKDIR</TD>
+			<TD>CARPETA</TD>
+			<TD>Carpeta5</TD>
+			<TD></TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKDIR</TD>
+			<TD>CARPETA</TD>
+			<TD>Carpeta6</TD>
+			<TD></TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKDIR</TD>
+			<TD>CARPETA</TD>
+			<TD>Carpeta7</TD>
+			<TD></TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKDIR</TD>
+			<TD>CARPETA</TD>
+			<TD>Carpeta8</TD>
+			<TD></TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKDIR</TD>
+			<TD>CARPETA</TD>
+			<TD>HOLA1</TD>
+			<TD></TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKDIR</TD>
+			<TD>CARPETA</TD>
+			<TD>HOLA2</TD>
+			<TD></TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKDIR</TD>
+			<TD>CARPETA</TD>
+			<TD>HOLA3</TD>
+			<TD></TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKDIR</TD>
+			<TD>CARPETA</TD>
+			<TD>HOLA4</TD>
+			<TD></TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKDIR</TD>
+			<TD>CARPETA</TD>
+			<TD>HOLA5</TD>
+			<TD></TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKDIR</TD>
+			<TD>CARPETA</TD>
+			<TD>HOLA6</TD>
+			<TD></TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKDIR</TD>
+			<TD>CARPETA</TD>
+			<TD>HOLA7</TD>
+			<TD></TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKDIR</TD>
+			<TD>CARPETA</TD>
+			<TD>HOLA8</TD>
+			<TD></TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKDIR</TD>
+			<TD>CARPETA</TD>
+			<TD>Adios1</TD>
+			<TD></TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKDIR</TD>
+			<TD>CARPETA</TD>
+			<TD>Adios2</TD>
+			<TD></TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKDIR</TD>
+			<TD>CARPETA</TD>
+			<TD>Adios3</TD>
+			<TD></TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKDIR</TD>
+			<TD>CARPETA</TD>
+			<TD>Adios4</TD>
+			<TD></TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKDIR</TD>
+			<TD>CARPETA</TD>
+			<TD>Adios5</TD>
+			<TD></TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKDIR</TD>
+			<TD>CARPETA</TD>
+			<TD>Adios6</TD>
+			<TD></TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKDIR</TD>
+			<TD>CARPETA</TD>
+			<TD>Adios7</TD>
+			<TD></TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKDIR</TD>
+			<TD>CARPETA</TD>
+			<TD>Adios8</TD>
+			<TD></TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKDIR</TD>
+			<TD>CARPETA</TD>
+			<TD>F1</TD>
+			<TD></TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKDIR</TD>
+			<TD>CARPETA</TD>
+			<TD>F2</TD>
+			<TD></TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKDIR</TD>
+			<TD>CARPETA</TD>
+			<TD>F3</TD>
+			<TD></TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKDIR</TD>
+			<TD>CARPETA</TD>
+			<TD>F4</TD>
+			<TD></TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKDIR</TD>
+			<TD>CARPETA</TD>
+			<TD>F5</TD>
+			<TD></TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKDIR</TD>
+			<TD>CARPETA</TD>
+			<TD>F6</TD>
+			<TD></TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKDIR</TD>
+			<TD>CARPETA</TD>
+			<TD>F7</TD>
+			<TD></TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKDIR</TD>
+			<TD>CARPETA</TD>
+			<TD>F8</TD>
+			<TD></TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKFILE</TD>
+			<TD>ARCHIVO</TD>
+			<TD>HOLA2.TXT</TD>
+			<TD>hola2</TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKFILE</TD>
+			<TD>ARCHIVO</TD>
+			<TD>HOLA3.TXT</TD>
+			<TD>hola3</TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKFILE</TD>
+			<TD>ARCHIVO</TD>
+			<TD>HOLA4.TXT</TD>
+			<TD>hola4</TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKFILE</TD>
+			<TD>ARCHIVO</TD>
+			<TD>HOLA5.TXT</TD>
+			<TD>hola5</TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKFILE</TD>
+			<TD>ARCHIVO</TD>
+			<TD>HOLA6.TXT</TD>
+			<TD>hola6</TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKFILE</TD>
+			<TD>ARCHIVO</TD>
+			<TD>HOLA7.TXT</TD>
+			<TD>hola7</TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKFILE</TD>
+			<TD>ARCHIVO</TD>
+			<TD>HOLA8.TXT</TD>
+			<TD>hola8</TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKFILE</TD>
+			<TD>ARCHIVO</TD>
+			<TD>FILE2.txt</TD>
+			<TD>File2</TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKFILE</TD>
+			<TD>ARCHIVO</TD>
+			<TD>FILE3.txt</TD>
+			<TD>File3</TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKFILE</TD>
+			<TD>ARCHIVO</TD>
+			<TD>FILE4.txt</TD>
+			<TD>File4</TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKFILE</TD>
+			<TD>ARCHIVO</TD>
+			<TD>FILE5.txt</TD>
+			<TD>File5</TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKFILE</TD>
+			<TD>ARCHIVO</TD>
+			<TD>FILE6.txt</TD>
+			<TD>File6</TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKFILE</TD>
+			<TD>ARCHIVO</TD>
+			<TD>FILE7.txt</TD>
+			<TD>File7</TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			<TR>
+			<TD>MKFILE</TD>
+			<TD>ARCHIVO</TD>
+			<TD>FILE8.txt</TD>
+			<TD>File8</TD>
+			<TD>2020-09-07 17:02</TD>
+			</TR>
+			</TABLE>>];
+
+}

@@ -1,0 +1,5 @@
+digraph D {
+node [fontname="Arial"];
+MBR [shape=record label="DCMBR.dsk\n2020-09-08 18:36|{MBR \n 4194304|PART1 \n 1048576|PART2 \n 1048576|PART3 \n 1048576|PART4 \n 1048576}"]
+
+}

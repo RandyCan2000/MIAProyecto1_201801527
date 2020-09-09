@@ -1,0 +1,1246 @@
+digraph g{
+		node [shape=plain]AVD1 [label=<
+<TABLE BGCOLOR="#E3EE67">
+<TR><TD colspan="8">Carpeta1</TD></TR>
+<TR>
+	<TD >1</TD>
+	<TD >2</TD>
+	<TD >3</TD>
+	<TD >4</TD>
+	<TD >5</TD>
+	<TD >6</TD>
+	<TD >DD</TD>
+	<TD >SG</TD>
+	</TR>
+  
+	<TR>
+	<TD port="1"></TD>
+	<TD port="2"></TD>
+	<TD port="3"></TD>
+	<TD port="4"></TD>
+	<TD port="5"></TD>
+	<TD port="6"></TD>
+	<TD port="7" bgcolor="skyblue"></TD>
+	<TD port="8" bgcolor="lightgreen"></TD>
+	</TR>\n</TABLE>
+>];
+AVD2 [label=<
+<TABLE BGCOLOR="#E3EE67">
+<TR><TD colspan="8">Carpeta2</TD></TR>
+<TR>
+	<TD >1</TD>
+	<TD >2</TD>
+	<TD >3</TD>
+	<TD >4</TD>
+	<TD >5</TD>
+	<TD >6</TD>
+	<TD >DD</TD>
+	<TD >SG</TD>
+	</TR>
+  
+	<TR>
+	<TD port="1"></TD>
+	<TD port="2"></TD>
+	<TD port="3"></TD>
+	<TD port="4"></TD>
+	<TD port="5"></TD>
+	<TD port="6"></TD>
+	<TD port="7" bgcolor="skyblue"></TD>
+	<TD port="8" bgcolor="lightgreen"></TD>
+	</TR>\n</TABLE>
+>];
+AVD3 [label=<
+<TABLE BGCOLOR="#E3EE67">
+<TR><TD colspan="8">Carpeta3</TD></TR>
+<TR>
+	<TD >1</TD>
+	<TD >2</TD>
+	<TD >3</TD>
+	<TD >4</TD>
+	<TD >5</TD>
+	<TD >6</TD>
+	<TD >DD</TD>
+	<TD >SG</TD>
+	</TR>
+  
+	<TR>
+	<TD port="1"></TD>
+	<TD port="2"></TD>
+	<TD port="3"></TD>
+	<TD port="4"></TD>
+	<TD port="5"></TD>
+	<TD port="6"></TD>
+	<TD port="7" bgcolor="skyblue"></TD>
+	<TD port="8" bgcolor="lightgreen"></TD>
+	</TR>\n</TABLE>
+>];
+AVD4 [label=<
+<TABLE BGCOLOR="#E3EE67">
+<TR><TD colspan="8">Carpeta4</TD></TR>
+<TR>
+	<TD >1</TD>
+	<TD >2</TD>
+	<TD >3</TD>
+	<TD >4</TD>
+	<TD >5</TD>
+	<TD >6</TD>
+	<TD >DD</TD>
+	<TD >SG</TD>
+	</TR>
+  
+	<TR>
+	<TD port="1"></TD>
+	<TD port="2"></TD>
+	<TD port="3"></TD>
+	<TD port="4"></TD>
+	<TD port="5"></TD>
+	<TD port="6"></TD>
+	<TD port="7" bgcolor="skyblue"></TD>
+	<TD port="8" bgcolor="lightgreen"></TD>
+	</TR>\n</TABLE>
+>];
+AVD5 [label=<
+<TABLE BGCOLOR="#E3EE67">
+<TR><TD colspan="8">Carpeta5</TD></TR>
+<TR>
+	<TD >1</TD>
+	<TD >2</TD>
+	<TD >3</TD>
+	<TD >4</TD>
+	<TD >5</TD>
+	<TD >6</TD>
+	<TD >DD</TD>
+	<TD >SG</TD>
+	</TR>
+  
+	<TR>
+	<TD port="1"></TD>
+	<TD port="2"></TD>
+	<TD port="3"></TD>
+	<TD port="4"></TD>
+	<TD port="5"></TD>
+	<TD port="6"></TD>
+	<TD port="7" bgcolor="skyblue"></TD>
+	<TD port="8" bgcolor="lightgreen"></TD>
+	</TR>\n</TABLE>
+>];
+AVD6 [label=<
+<TABLE BGCOLOR="#E3EE67">
+<TR><TD colspan="8">Carpeta6</TD></TR>
+<TR>
+	<TD >1</TD>
+	<TD >2</TD>
+	<TD >3</TD>
+	<TD >4</TD>
+	<TD >5</TD>
+	<TD >6</TD>
+	<TD >DD</TD>
+	<TD >SG</TD>
+	</TR>
+  
+	<TR>
+	<TD port="1"></TD>
+	<TD port="2"></TD>
+	<TD port="3"></TD>
+	<TD port="4"></TD>
+	<TD port="5"></TD>
+	<TD port="6"></TD>
+	<TD port="7" bgcolor="skyblue"></TD>
+	<TD port="8" bgcolor="lightgreen"></TD>
+	</TR>\n</TABLE>
+>];
+AVD8 [label=<
+<TABLE BGCOLOR="#E3EE67">
+<TR><TD colspan="8">Carpeta7</TD></TR>
+<TR>
+	<TD >1</TD>
+	<TD >2</TD>
+	<TD >3</TD>
+	<TD >4</TD>
+	<TD >5</TD>
+	<TD >6</TD>
+	<TD >DD</TD>
+	<TD >SG</TD>
+	</TR>
+  
+	<TR>
+	<TD port="1"></TD>
+	<TD port="2"></TD>
+	<TD port="3"></TD>
+	<TD port="4"></TD>
+	<TD port="5"></TD>
+	<TD port="6"></TD>
+	<TD port="7" bgcolor="skyblue"></TD>
+	<TD port="8" bgcolor="lightgreen"></TD>
+	</TR>\n</TABLE>
+>];
+AVD10 [label=<
+<TABLE BGCOLOR="#E3EE67">
+<TR><TD colspan="8">HOLA1</TD></TR>
+<TR>
+	<TD >1</TD>
+	<TD >2</TD>
+	<TD >3</TD>
+	<TD >4</TD>
+	<TD >5</TD>
+	<TD >6</TD>
+	<TD >DD</TD>
+	<TD >SG</TD>
+	</TR>
+  
+	<TR>
+	<TD port="1"></TD>
+	<TD port="2"></TD>
+	<TD port="3"></TD>
+	<TD port="4"></TD>
+	<TD port="5"></TD>
+	<TD port="6"></TD>
+	<TD port="7" bgcolor="skyblue"></TD>
+	<TD port="8" bgcolor="lightgreen"></TD>
+	</TR>\n</TABLE>
+>];
+AVD11 [label=<
+<TABLE BGCOLOR="#E3EE67">
+<TR><TD colspan="8">HOLA2</TD></TR>
+<TR>
+	<TD >1</TD>
+	<TD >2</TD>
+	<TD >3</TD>
+	<TD >4</TD>
+	<TD >5</TD>
+	<TD >6</TD>
+	<TD >DD</TD>
+	<TD >SG</TD>
+	</TR>
+  
+	<TR>
+	<TD port="1"></TD>
+	<TD port="2"></TD>
+	<TD port="3"></TD>
+	<TD port="4"></TD>
+	<TD port="5"></TD>
+	<TD port="6"></TD>
+	<TD port="7" bgcolor="skyblue"></TD>
+	<TD port="8" bgcolor="lightgreen"></TD>
+	</TR>\n</TABLE>
+>];
+AVD12 [label=<
+<TABLE BGCOLOR="#E3EE67">
+<TR><TD colspan="8">HOLA3</TD></TR>
+<TR>
+	<TD >1</TD>
+	<TD >2</TD>
+	<TD >3</TD>
+	<TD >4</TD>
+	<TD >5</TD>
+	<TD >6</TD>
+	<TD >DD</TD>
+	<TD >SG</TD>
+	</TR>
+  
+	<TR>
+	<TD port="1"></TD>
+	<TD port="2"></TD>
+	<TD port="3"></TD>
+	<TD port="4"></TD>
+	<TD port="5"></TD>
+	<TD port="6"></TD>
+	<TD port="7" bgcolor="skyblue"></TD>
+	<TD port="8" bgcolor="lightgreen"></TD>
+	</TR>\n</TABLE>
+>];
+AVD13 [label=<
+<TABLE BGCOLOR="#E3EE67">
+<TR><TD colspan="8">HOLA4</TD></TR>
+<TR>
+	<TD >1</TD>
+	<TD >2</TD>
+	<TD >3</TD>
+	<TD >4</TD>
+	<TD >5</TD>
+	<TD >6</TD>
+	<TD >DD</TD>
+	<TD >SG</TD>
+	</TR>
+  
+	<TR>
+	<TD port="1"></TD>
+	<TD port="2"></TD>
+	<TD port="3"></TD>
+	<TD port="4"></TD>
+	<TD port="5"></TD>
+	<TD port="6"></TD>
+	<TD port="7" bgcolor="skyblue"></TD>
+	<TD port="8" bgcolor="lightgreen"></TD>
+	</TR>\n</TABLE>
+>];
+AVD14 [label=<
+<TABLE BGCOLOR="#E3EE67">
+<TR><TD colspan="8">HOLA5</TD></TR>
+<TR>
+	<TD >1</TD>
+	<TD >2</TD>
+	<TD >3</TD>
+	<TD >4</TD>
+	<TD >5</TD>
+	<TD >6</TD>
+	<TD >DD</TD>
+	<TD >SG</TD>
+	</TR>
+  
+	<TR>
+	<TD port="1"></TD>
+	<TD port="2"></TD>
+	<TD port="3"></TD>
+	<TD port="4"></TD>
+	<TD port="5"></TD>
+	<TD port="6"></TD>
+	<TD port="7" bgcolor="skyblue"></TD>
+	<TD port="8" bgcolor="lightgreen"></TD>
+	</TR>\n</TABLE>
+>];
+AVD15 [label=<
+<TABLE BGCOLOR="#E3EE67">
+<TR><TD colspan="8">HOLA6</TD></TR>
+<TR>
+	<TD >1</TD>
+	<TD >2</TD>
+	<TD >3</TD>
+	<TD >4</TD>
+	<TD >5</TD>
+	<TD >6</TD>
+	<TD >DD</TD>
+	<TD >SG</TD>
+	</TR>
+  
+	<TR>
+	<TD port="1"></TD>
+	<TD port="2"></TD>
+	<TD port="3"></TD>
+	<TD port="4"></TD>
+	<TD port="5"></TD>
+	<TD port="6"></TD>
+	<TD port="7" bgcolor="skyblue"></TD>
+	<TD port="8" bgcolor="lightgreen"></TD>
+	</TR>\n</TABLE>
+>];
+AVD17 [label=<
+<TABLE BGCOLOR="#E3EE67">
+<TR><TD colspan="8">HOLA7</TD></TR>
+<TR>
+	<TD >1</TD>
+	<TD >2</TD>
+	<TD >3</TD>
+	<TD >4</TD>
+	<TD >5</TD>
+	<TD >6</TD>
+	<TD >DD</TD>
+	<TD >SG</TD>
+	</TR>
+  
+	<TR>
+	<TD port="1"></TD>
+	<TD port="2"></TD>
+	<TD port="3"></TD>
+	<TD port="4"></TD>
+	<TD port="5"></TD>
+	<TD port="6"></TD>
+	<TD port="7" bgcolor="skyblue"></TD>
+	<TD port="8" bgcolor="lightgreen"></TD>
+	</TR>\n</TABLE>
+>];
+AVD19 [label=<
+<TABLE BGCOLOR="#E3EE67">
+<TR><TD colspan="8">Adios1</TD></TR>
+<TR>
+	<TD >1</TD>
+	<TD >2</TD>
+	<TD >3</TD>
+	<TD >4</TD>
+	<TD >5</TD>
+	<TD >6</TD>
+	<TD >DD</TD>
+	<TD >SG</TD>
+	</TR>
+  
+	<TR>
+	<TD port="1"></TD>
+	<TD port="2"></TD>
+	<TD port="3"></TD>
+	<TD port="4"></TD>
+	<TD port="5"></TD>
+	<TD port="6"></TD>
+	<TD port="7" bgcolor="skyblue"></TD>
+	<TD port="8" bgcolor="lightgreen"></TD>
+	</TR>\n</TABLE>
+>];
+AVD20 [label=<
+<TABLE BGCOLOR="#E3EE67">
+<TR><TD colspan="8">Adios2</TD></TR>
+<TR>
+	<TD >1</TD>
+	<TD >2</TD>
+	<TD >3</TD>
+	<TD >4</TD>
+	<TD >5</TD>
+	<TD >6</TD>
+	<TD >DD</TD>
+	<TD >SG</TD>
+	</TR>
+  
+	<TR>
+	<TD port="1"></TD>
+	<TD port="2"></TD>
+	<TD port="3"></TD>
+	<TD port="4"></TD>
+	<TD port="5"></TD>
+	<TD port="6"></TD>
+	<TD port="7" bgcolor="skyblue"></TD>
+	<TD port="8" bgcolor="lightgreen"></TD>
+	</TR>\n</TABLE>
+>];
+AVD21 [label=<
+<TABLE BGCOLOR="#E3EE67">
+<TR><TD colspan="8">Adios3</TD></TR>
+<TR>
+	<TD >1</TD>
+	<TD >2</TD>
+	<TD >3</TD>
+	<TD >4</TD>
+	<TD >5</TD>
+	<TD >6</TD>
+	<TD >DD</TD>
+	<TD >SG</TD>
+	</TR>
+  
+	<TR>
+	<TD port="1"></TD>
+	<TD port="2"></TD>
+	<TD port="3"></TD>
+	<TD port="4"></TD>
+	<TD port="5"></TD>
+	<TD port="6"></TD>
+	<TD port="7" bgcolor="skyblue"></TD>
+	<TD port="8" bgcolor="lightgreen"></TD>
+	</TR>\n</TABLE>
+>];
+AVD22 [label=<
+<TABLE BGCOLOR="#E3EE67">
+<TR><TD colspan="8">Adios4</TD></TR>
+<TR>
+	<TD >1</TD>
+	<TD >2</TD>
+	<TD >3</TD>
+	<TD >4</TD>
+	<TD >5</TD>
+	<TD >6</TD>
+	<TD >DD</TD>
+	<TD >SG</TD>
+	</TR>
+  
+	<TR>
+	<TD port="1"></TD>
+	<TD port="2"></TD>
+	<TD port="3"></TD>
+	<TD port="4"></TD>
+	<TD port="5"></TD>
+	<TD port="6"></TD>
+	<TD port="7" bgcolor="skyblue"></TD>
+	<TD port="8" bgcolor="lightgreen"></TD>
+	</TR>\n</TABLE>
+>];
+AVD23 [label=<
+<TABLE BGCOLOR="#E3EE67">
+<TR><TD colspan="8">Adios5</TD></TR>
+<TR>
+	<TD >1</TD>
+	<TD >2</TD>
+	<TD >3</TD>
+	<TD >4</TD>
+	<TD >5</TD>
+	<TD >6</TD>
+	<TD >DD</TD>
+	<TD >SG</TD>
+	</TR>
+  
+	<TR>
+	<TD port="1"></TD>
+	<TD port="2"></TD>
+	<TD port="3"></TD>
+	<TD port="4"></TD>
+	<TD port="5"></TD>
+	<TD port="6"></TD>
+	<TD port="7" bgcolor="skyblue"></TD>
+	<TD port="8" bgcolor="lightgreen"></TD>
+	</TR>\n</TABLE>
+>];
+AVD24 [label=<
+<TABLE BGCOLOR="#E3EE67">
+<TR><TD colspan="8">Adios6</TD></TR>
+<TR>
+	<TD >1</TD>
+	<TD >2</TD>
+	<TD >3</TD>
+	<TD >4</TD>
+	<TD >5</TD>
+	<TD >6</TD>
+	<TD >DD</TD>
+	<TD >SG</TD>
+	</TR>
+  
+	<TR>
+	<TD port="1"></TD>
+	<TD port="2"></TD>
+	<TD port="3"></TD>
+	<TD port="4"></TD>
+	<TD port="5"></TD>
+	<TD port="6"></TD>
+	<TD port="7" bgcolor="skyblue"></TD>
+	<TD port="8" bgcolor="lightgreen"></TD>
+	</TR>\n</TABLE>
+>];
+AVD26 [label=<
+<TABLE BGCOLOR="#E3EE67">
+<TR><TD colspan="8">Adios7</TD></TR>
+<TR>
+	<TD >1</TD>
+	<TD >2</TD>
+	<TD >3</TD>
+	<TD >4</TD>
+	<TD >5</TD>
+	<TD >6</TD>
+	<TD >DD</TD>
+	<TD >SG</TD>
+	</TR>
+  
+	<TR>
+	<TD port="1"></TD>
+	<TD port="2"></TD>
+	<TD port="3"></TD>
+	<TD port="4"></TD>
+	<TD port="5"></TD>
+	<TD port="6"></TD>
+	<TD port="7" bgcolor="skyblue"></TD>
+	<TD port="8" bgcolor="lightgreen"></TD>
+	</TR>\n</TABLE>
+>];
+AVD28 [label=<
+<TABLE BGCOLOR="#E3EE67">
+<TR><TD colspan="8">F1</TD></TR>
+<TR>
+	<TD >1</TD>
+	<TD >2</TD>
+	<TD >3</TD>
+	<TD >4</TD>
+	<TD >5</TD>
+	<TD >6</TD>
+	<TD >DD</TD>
+	<TD >SG</TD>
+	</TR>
+  
+	<TR>
+	<TD port="1"></TD>
+	<TD port="2"></TD>
+	<TD port="3"></TD>
+	<TD port="4"></TD>
+	<TD port="5"></TD>
+	<TD port="6"></TD>
+	<TD port="7" bgcolor="skyblue"></TD>
+	<TD port="8" bgcolor="lightgreen"></TD>
+	</TR>\n</TABLE>
+>];
+AVD29 [label=<
+<TABLE BGCOLOR="#E3EE67">
+<TR><TD colspan="8">F2</TD></TR>
+<TR>
+	<TD >1</TD>
+	<TD >2</TD>
+	<TD >3</TD>
+	<TD >4</TD>
+	<TD >5</TD>
+	<TD >6</TD>
+	<TD >DD</TD>
+	<TD >SG</TD>
+	</TR>
+  
+	<TR>
+	<TD port="1"></TD>
+	<TD port="2"></TD>
+	<TD port="3"></TD>
+	<TD port="4"></TD>
+	<TD port="5"></TD>
+	<TD port="6"></TD>
+	<TD port="7" bgcolor="skyblue"></TD>
+	<TD port="8" bgcolor="lightgreen"></TD>
+	</TR>\n</TABLE>
+>];
+AVD30 [label=<
+<TABLE BGCOLOR="#E3EE67">
+<TR><TD colspan="8">F3</TD></TR>
+<TR>
+	<TD >1</TD>
+	<TD >2</TD>
+	<TD >3</TD>
+	<TD >4</TD>
+	<TD >5</TD>
+	<TD >6</TD>
+	<TD >DD</TD>
+	<TD >SG</TD>
+	</TR>
+  
+	<TR>
+	<TD port="1"></TD>
+	<TD port="2"></TD>
+	<TD port="3"></TD>
+	<TD port="4"></TD>
+	<TD port="5"></TD>
+	<TD port="6"></TD>
+	<TD port="7" bgcolor="skyblue"></TD>
+	<TD port="8" bgcolor="lightgreen"></TD>
+	</TR>\n</TABLE>
+>];
+AVD31 [label=<
+<TABLE BGCOLOR="#E3EE67">
+<TR><TD colspan="8">F4</TD></TR>
+<TR>
+	<TD >1</TD>
+	<TD >2</TD>
+	<TD >3</TD>
+	<TD >4</TD>
+	<TD >5</TD>
+	<TD >6</TD>
+	<TD >DD</TD>
+	<TD >SG</TD>
+	</TR>
+  
+	<TR>
+	<TD port="1"></TD>
+	<TD port="2"></TD>
+	<TD port="3"></TD>
+	<TD port="4"></TD>
+	<TD port="5"></TD>
+	<TD port="6"></TD>
+	<TD port="7" bgcolor="skyblue"></TD>
+	<TD port="8" bgcolor="lightgreen"></TD>
+	</TR>\n</TABLE>
+>];
+AVD32 [label=<
+<TABLE BGCOLOR="#E3EE67">
+<TR><TD colspan="8">F5</TD></TR>
+<TR>
+	<TD >1</TD>
+	<TD >2</TD>
+	<TD >3</TD>
+	<TD >4</TD>
+	<TD >5</TD>
+	<TD >6</TD>
+	<TD >DD</TD>
+	<TD >SG</TD>
+	</TR>
+  
+	<TR>
+	<TD port="1"></TD>
+	<TD port="2"></TD>
+	<TD port="3"></TD>
+	<TD port="4"></TD>
+	<TD port="5"></TD>
+	<TD port="6"></TD>
+	<TD port="7" bgcolor="skyblue"></TD>
+	<TD port="8" bgcolor="lightgreen"></TD>
+	</TR>\n</TABLE>
+>];
+AVD33 [label=<
+<TABLE BGCOLOR="#E3EE67">
+<TR><TD colspan="8">F6</TD></TR>
+<TR>
+	<TD >1</TD>
+	<TD >2</TD>
+	<TD >3</TD>
+	<TD >4</TD>
+	<TD >5</TD>
+	<TD >6</TD>
+	<TD >DD</TD>
+	<TD >SG</TD>
+	</TR>
+  
+	<TR>
+	<TD port="1"></TD>
+	<TD port="2"></TD>
+	<TD port="3"></TD>
+	<TD port="4"></TD>
+	<TD port="5"></TD>
+	<TD port="6"></TD>
+	<TD port="7" bgcolor="skyblue"></TD>
+	<TD port="8" bgcolor="lightgreen"></TD>
+	</TR>\n</TABLE>
+>];
+BLOQUE1 [label=<<TABLE><TR><TD bgcolor="skyblue">Funciona.txtABCDEFGHIJKLM</TD></TR></TABLE>>];
+BLOQUE2 [label=<<TABLE><TR><TD bgcolor="skyblue">NOPQRSTUVWXYZABCDEFGHIJKL</TD></TR></TABLE>>];
+BLOQUE3 [label=<<TABLE><TR><TD bgcolor="skyblue">MNOPQRSTUVWXYZABCD</TD></TR></TABLE>>];
+Inodo1 [label=<<TABLE BGCOLOR="#F99381"><TR><TD colspan="2">INODO</TD></TR>
+<TR><TD >1</TD><TD port="1"></TD></TR>
+	<TR><TD >2</TD><TD port="2"></TD></TR>
+	<TR><TD >3</TD><TD port="3"></TD></TR>
+	<TR><TD >4</TD><TD port="4"></TD></TR>
+	<TR><TD >SG</TD><TD port="5" bgcolor="lightgreen"></TD></TR>\n</TABLE>>];
+Inodo1:1->BLOQUE1
+Inodo1:2->BLOQUE2
+Inodo1:3->BLOQUE3
+DD1 [label=<
+<TABLE BGCOLOR="#EEAD67">
+<TR><TD colspan="2">DD</TD></TR>
+<TR><TD >1</TD><TD port="1">FUNCIONA.txt</TD></TR>
+	<TR><TD >2</TD><TD port="2"></TD></TR>
+	<TR><TD >3</TD><TD port="3"></TD></TR>
+	<TR><TD >4</TD><TD port="4"></TD></TR>
+	<TR><TD >5</TD><TD port="5"></TD></TR>
+	<TR><TD >SG</TD><TD port="6" bgcolor="lightgreen"></TD></TR>\n</TABLE>
+>];
+DD1:1->Inodo1
+AVD35 [label=<
+<TABLE BGCOLOR="#E3EE67">
+<TR><TD colspan="8">F7</TD></TR>
+<TR>
+	<TD >1</TD>
+	<TD >2</TD>
+	<TD >3</TD>
+	<TD >4</TD>
+	<TD >5</TD>
+	<TD >6</TD>
+	<TD >DD</TD>
+	<TD >SG</TD>
+	</TR>
+  
+	<TR>
+	<TD port="1"></TD>
+	<TD port="2"></TD>
+	<TD port="3"></TD>
+	<TD port="4"></TD>
+	<TD port="5"></TD>
+	<TD port="6"></TD>
+	<TD port="7" bgcolor="skyblue"></TD>
+	<TD port="8" bgcolor="lightgreen"></TD>
+	</TR>\n</TABLE>
+>];
+AVD35:7->DD1
+BLOQUE4 [label=<<TABLE><TR><TD bgcolor="skyblue">Fi</TD></TR></TABLE>>];
+Inodo2 [label=<<TABLE BGCOLOR="#F99381"><TR><TD colspan="2">INODO</TD></TR>
+<TR><TD >1</TD><TD port="1"></TD></TR>
+	<TR><TD >2</TD><TD port="2"></TD></TR>
+	<TR><TD >3</TD><TD port="3"></TD></TR>
+	<TR><TD >4</TD><TD port="4"></TD></TR>
+	<TR><TD >SG</TD><TD port="5" bgcolor="lightgreen"></TD></TR>\n</TABLE>>];
+Inodo2:1->BLOQUE4
+BLOQUE5 [label=<<TABLE><TR><TD bgcolor="skyblue">File2ABCDEFGHIJKLMNOPQRST</TD></TR></TABLE>>];
+BLOQUE6 [label=<<TABLE><TR><TD bgcolor="skyblue">UVWXYZABCDEFGHIJKLMNOPQRS</TD></TR></TABLE>>];
+BLOQUE7 [label=<<TABLE><TR><TD bgcolor="skyblue">TUVWXYZABCDEFGHIJK</TD></TR></TABLE>>];
+Inodo3 [label=<<TABLE BGCOLOR="#F99381"><TR><TD colspan="2">INODO</TD></TR>
+<TR><TD >1</TD><TD port="1"></TD></TR>
+	<TR><TD >2</TD><TD port="2"></TD></TR>
+	<TR><TD >3</TD><TD port="3"></TD></TR>
+	<TR><TD >4</TD><TD port="4"></TD></TR>
+	<TR><TD >SG</TD><TD port="5" bgcolor="lightgreen"></TD></TR>\n</TABLE>>];
+Inodo3:1->BLOQUE5
+Inodo3:2->BLOQUE6
+Inodo3:3->BLOQUE7
+BLOQUE8 [label=<<TABLE><TR><TD bgcolor="skyblue">File4ABCDEFGHIJKLMNOPQRST</TD></TR></TABLE>>];
+BLOQUE9 [label=<<TABLE><TR><TD bgcolor="skyblue">UVWXYZABCDEFGHIJKLMNOPQRS</TD></TR></TABLE>>];
+BLOQUE10 [label=<<TABLE><TR><TD bgcolor="skyblue">TUVWXYZABCDEFGHIJK</TD></TR></TABLE>>];
+Inodo4 [label=<<TABLE BGCOLOR="#F99381"><TR><TD colspan="2">INODO</TD></TR>
+<TR><TD >1</TD><TD port="1"></TD></TR>
+	<TR><TD >2</TD><TD port="2"></TD></TR>
+	<TR><TD >3</TD><TD port="3"></TD></TR>
+	<TR><TD >4</TD><TD port="4"></TD></TR>
+	<TR><TD >SG</TD><TD port="5" bgcolor="lightgreen"></TD></TR>\n</TABLE>>];
+Inodo4:1->BLOQUE8
+Inodo4:2->BLOQUE9
+Inodo4:3->BLOQUE10
+BLOQUE11 [label=<<TABLE><TR><TD bgcolor="skyblue">File5ABCDEFGHIJKLMNOPQRST</TD></TR></TABLE>>];
+BLOQUE12 [label=<<TABLE><TR><TD bgcolor="skyblue">UVWXYZABCDEFGHIJKLMNOPQRS</TD></TR></TABLE>>];
+BLOQUE13 [label=<<TABLE><TR><TD bgcolor="skyblue">TUVWXYZABCDEFGHIJK</TD></TR></TABLE>>];
+Inodo5 [label=<<TABLE BGCOLOR="#F99381"><TR><TD colspan="2">INODO</TD></TR>
+<TR><TD >1</TD><TD port="1"></TD></TR>
+	<TR><TD >2</TD><TD port="2"></TD></TR>
+	<TR><TD >3</TD><TD port="3"></TD></TR>
+	<TR><TD >4</TD><TD port="4"></TD></TR>
+	<TR><TD >SG</TD><TD port="5" bgcolor="lightgreen"></TD></TR>\n</TABLE>>];
+Inodo5:1->BLOQUE11
+Inodo5:2->BLOQUE12
+Inodo5:3->BLOQUE13
+BLOQUE14 [label=<<TABLE><TR><TD bgcolor="skyblue">File6ABCDEFGHIJKLMNOPQRST</TD></TR></TABLE>>];
+BLOQUE15 [label=<<TABLE><TR><TD bgcolor="skyblue">UVWXYZABCDEFGHIJKLMNOPQRS</TD></TR></TABLE>>];
+BLOQUE16 [label=<<TABLE><TR><TD bgcolor="skyblue">TUVWXYZABCDEFGHIJK</TD></TR></TABLE>>];
+Inodo6 [label=<<TABLE BGCOLOR="#F99381"><TR><TD colspan="2">INODO</TD></TR>
+<TR><TD >1</TD><TD port="1"></TD></TR>
+	<TR><TD >2</TD><TD port="2"></TD></TR>
+	<TR><TD >3</TD><TD port="3"></TD></TR>
+	<TR><TD >4</TD><TD port="4"></TD></TR>
+	<TR><TD >SG</TD><TD port="5" bgcolor="lightgreen"></TD></TR>\n</TABLE>>];
+Inodo6:1->BLOQUE14
+Inodo6:2->BLOQUE15
+Inodo6:3->BLOQUE16
+BLOQUE17 [label=<<TABLE><TR><TD bgcolor="skyblue">File7ABCDEFGHIJKLMNOPQRST</TD></TR></TABLE>>];
+BLOQUE18 [label=<<TABLE><TR><TD bgcolor="skyblue">UVWXYZABCDEFGHIJKLMNOPQRS</TD></TR></TABLE>>];
+BLOQUE19 [label=<<TABLE><TR><TD bgcolor="skyblue">TUVWXYZABCDEFGHIJK</TD></TR></TABLE>>];
+Inodo7 [label=<<TABLE BGCOLOR="#F99381"><TR><TD colspan="2">INODO</TD></TR>
+<TR><TD >1</TD><TD port="1"></TD></TR>
+	<TR><TD >2</TD><TD port="2"></TD></TR>
+	<TR><TD >3</TD><TD port="3"></TD></TR>
+	<TR><TD >4</TD><TD port="4"></TD></TR>
+	<TR><TD >SG</TD><TD port="5" bgcolor="lightgreen"></TD></TR>\n</TABLE>>];
+Inodo7:1->BLOQUE17
+Inodo7:2->BLOQUE18
+Inodo7:3->BLOQUE19
+BLOQUE20 [label=<<TABLE><TR><TD bgcolor="skyblue">File8ABCDEFGHIJKLMNOPQRST</TD></TR></TABLE>>];
+BLOQUE21 [label=<<TABLE><TR><TD bgcolor="skyblue">UVWXYZABCDEFGHIJKLMNOPQRS</TD></TR></TABLE>>];
+BLOQUE22 [label=<<TABLE><TR><TD bgcolor="skyblue">TUVWXYZABCDEFGHIJK</TD></TR></TABLE>>];
+Inodo8 [label=<<TABLE BGCOLOR="#F99381"><TR><TD colspan="2">INODO</TD></TR>
+<TR><TD >1</TD><TD port="1"></TD></TR>
+	<TR><TD >2</TD><TD port="2"></TD></TR>
+	<TR><TD >3</TD><TD port="3"></TD></TR>
+	<TR><TD >4</TD><TD port="4"></TD></TR>
+	<TR><TD >SG</TD><TD port="5" bgcolor="lightgreen"></TD></TR>\n</TABLE>>];
+Inodo8:1->BLOQUE20
+Inodo8:2->BLOQUE21
+Inodo8:3->BLOQUE22
+DD3 [label=<
+<TABLE BGCOLOR="#EEAD67">
+<TR><TD colspan="2">DD</TD></TR>
+<TR><TD >1</TD><TD port="1">FILE6.txt</TD></TR>
+	<TR><TD >2</TD><TD port="2">FILE7.txt</TD></TR>
+	<TR><TD >3</TD><TD port="3">FILE8.txt</TD></TR>
+	<TR><TD >4</TD><TD port="4"></TD></TR>
+	<TR><TD >5</TD><TD port="5"></TD></TR>
+	<TR><TD >SG</TD><TD port="6" bgcolor="lightgreen"></TD></TR>\n</TABLE>
+>];
+DD3:1->Inodo6
+DD3:2->Inodo7
+DD3:3->Inodo8
+DD2 [label=<
+<TABLE BGCOLOR="#EEAD67">
+<TR><TD colspan="2">DD</TD></TR>
+<TR><TD >1</TD><TD port="1">FILE1.txt</TD></TR>
+	<TR><TD >2</TD><TD port="2">FILE2.txt</TD></TR>
+	<TR><TD >3</TD><TD port="3"></TD></TR>
+	<TR><TD >4</TD><TD port="4">FILE4.txt</TD></TR>
+	<TR><TD >5</TD><TD port="5">FILE5.txt</TD></TR>
+	<TR><TD >SG</TD><TD port="6" bgcolor="lightgreen"></TD></TR>\n</TABLE>
+>];
+DD2:6->DD3
+DD2:1->Inodo2
+DD2:2->Inodo3
+DD2:4->Inodo4
+DD2:5->Inodo5
+AVD36 [label=<
+<TABLE BGCOLOR="#E3EE67">
+<TR><TD colspan="8">F8</TD></TR>
+<TR>
+	<TD >1</TD>
+	<TD >2</TD>
+	<TD >3</TD>
+	<TD >4</TD>
+	<TD >5</TD>
+	<TD >6</TD>
+	<TD >DD</TD>
+	<TD >SG</TD>
+	</TR>
+  
+	<TR>
+	<TD port="1"></TD>
+	<TD port="2"></TD>
+	<TD port="3"></TD>
+	<TD port="4"></TD>
+	<TD port="5"></TD>
+	<TD port="6"></TD>
+	<TD port="7" bgcolor="skyblue"></TD>
+	<TD port="8" bgcolor="lightgreen"></TD>
+	</TR>\n</TABLE>
+>];
+AVD36:7->DD2
+AVD34 [label=<
+<TABLE BGCOLOR="#E3EE67">
+<TR><TD colspan="8">Adios8</TD></TR>
+<TR>
+	<TD >1</TD>
+	<TD >2</TD>
+	<TD >3</TD>
+	<TD >4</TD>
+	<TD >5</TD>
+	<TD >6</TD>
+	<TD >DD</TD>
+	<TD >SG</TD>
+	</TR>
+  
+	<TR>
+	<TD port="1"></TD>
+	<TD port="2"></TD>
+	<TD port="3"></TD>
+	<TD port="4"></TD>
+	<TD port="5"></TD>
+	<TD port="6"></TD>
+	<TD port="7" bgcolor="skyblue"></TD>
+	<TD port="8" bgcolor="lightgreen"></TD>
+	</TR>\n</TABLE>
+>];
+AVD34:1->AVD35
+AVD34:2->AVD36
+AVD27 [label=<
+<TABLE BGCOLOR="#E3EE67">
+<TR><TD colspan="8">Adios8</TD></TR>
+<TR>
+	<TD >1</TD>
+	<TD >2</TD>
+	<TD >3</TD>
+	<TD >4</TD>
+	<TD >5</TD>
+	<TD >6</TD>
+	<TD >DD</TD>
+	<TD >SG</TD>
+	</TR>
+  
+	<TR>
+	<TD port="1"></TD>
+	<TD port="2"></TD>
+	<TD port="3"></TD>
+	<TD port="4"></TD>
+	<TD port="5"></TD>
+	<TD port="6"></TD>
+	<TD port="7" bgcolor="skyblue"></TD>
+	<TD port="8" bgcolor="lightgreen"></TD>
+	</TR>\n</TABLE>
+>];
+AVD27:1->AVD28
+AVD27:2->AVD29
+AVD27:3->AVD30
+AVD27:4->AVD31
+AVD27:5->AVD32
+AVD27:6->AVD33
+AVD27:8->AVD34
+AVD25 [label=<
+<TABLE BGCOLOR="#E3EE67">
+<TR><TD colspan="8">HOLA8</TD></TR>
+<TR>
+	<TD >1</TD>
+	<TD >2</TD>
+	<TD >3</TD>
+	<TD >4</TD>
+	<TD >5</TD>
+	<TD >6</TD>
+	<TD >DD</TD>
+	<TD >SG</TD>
+	</TR>
+  
+	<TR>
+	<TD port="1"></TD>
+	<TD port="2"></TD>
+	<TD port="3"></TD>
+	<TD port="4"></TD>
+	<TD port="5"></TD>
+	<TD port="6"></TD>
+	<TD port="7" bgcolor="skyblue"></TD>
+	<TD port="8" bgcolor="lightgreen"></TD>
+	</TR>\n</TABLE>
+>];
+AVD25:1->AVD26
+AVD25:2->AVD27
+AVD18 [label=<
+<TABLE BGCOLOR="#E3EE67">
+<TR><TD colspan="8">HOLA8</TD></TR>
+<TR>
+	<TD >1</TD>
+	<TD >2</TD>
+	<TD >3</TD>
+	<TD >4</TD>
+	<TD >5</TD>
+	<TD >6</TD>
+	<TD >DD</TD>
+	<TD >SG</TD>
+	</TR>
+  
+	<TR>
+	<TD port="1"></TD>
+	<TD port="2"></TD>
+	<TD port="3"></TD>
+	<TD port="4"></TD>
+	<TD port="5"></TD>
+	<TD port="6"></TD>
+	<TD port="7" bgcolor="skyblue"></TD>
+	<TD port="8" bgcolor="lightgreen"></TD>
+	</TR>\n</TABLE>
+>];
+AVD18:1->AVD19
+AVD18:2->AVD20
+AVD18:3->AVD21
+AVD18:4->AVD22
+AVD18:5->AVD23
+AVD18:6->AVD24
+AVD18:8->AVD25
+AVD16 [label=<
+<TABLE BGCOLOR="#E3EE67">
+<TR><TD colspan="8">Carpeta8</TD></TR>
+<TR>
+	<TD >1</TD>
+	<TD >2</TD>
+	<TD >3</TD>
+	<TD >4</TD>
+	<TD >5</TD>
+	<TD >6</TD>
+	<TD >DD</TD>
+	<TD >SG</TD>
+	</TR>
+  
+	<TR>
+	<TD port="1"></TD>
+	<TD port="2"></TD>
+	<TD port="3"></TD>
+	<TD port="4"></TD>
+	<TD port="5"></TD>
+	<TD port="6"></TD>
+	<TD port="7" bgcolor="skyblue"></TD>
+	<TD port="8" bgcolor="lightgreen"></TD>
+	</TR>\n</TABLE>
+>];
+AVD16:1->AVD17
+AVD16:2->AVD18
+BLOQUE23 [label=<<TABLE><TR><TD bgcolor="skyblue">hola1ABCDEFGHIJKLMNOPQRST</TD></TR></TABLE>>];
+BLOQUE24 [label=<<TABLE><TR><TD bgcolor="skyblue">UVWXYZABCDEFGHIJKLMNOPQRS</TD></TR></TABLE>>];
+BLOQUE25 [label=<<TABLE><TR><TD bgcolor="skyblue">TUVWXYZABCDEFGHIJK</TD></TR></TABLE>>];
+Inodo9 [label=<<TABLE BGCOLOR="#F99381"><TR><TD colspan="2">INODO</TD></TR>
+<TR><TD >1</TD><TD port="1"></TD></TR>
+	<TR><TD >2</TD><TD port="2"></TD></TR>
+	<TR><TD >3</TD><TD port="3"></TD></TR>
+	<TR><TD >4</TD><TD port="4"></TD></TR>
+	<TR><TD >SG</TD><TD port="5" bgcolor="lightgreen"></TD></TR>\n</TABLE>>];
+Inodo9:1->BLOQUE23
+Inodo9:2->BLOQUE24
+Inodo9:3->BLOQUE25
+BLOQUE26 [label=<<TABLE><TR><TD bgcolor="skyblue">hola2ABCDEFGHIJKLMNOPQRST</TD></TR></TABLE>>];
+BLOQUE27 [label=<<TABLE><TR><TD bgcolor="skyblue">UVWXYZABCDEFGHIJKLMNOPQRS</TD></TR></TABLE>>];
+BLOQUE28 [label=<<TABLE><TR><TD bgcolor="skyblue">TUVWXYZABCDEFGHIJK</TD></TR></TABLE>>];
+Inodo10 [label=<<TABLE BGCOLOR="#F99381"><TR><TD colspan="2">INODO</TD></TR>
+<TR><TD >1</TD><TD port="1"></TD></TR>
+	<TR><TD >2</TD><TD port="2"></TD></TR>
+	<TR><TD >3</TD><TD port="3"></TD></TR>
+	<TR><TD >4</TD><TD port="4"></TD></TR>
+	<TR><TD >SG</TD><TD port="5" bgcolor="lightgreen"></TD></TR>\n</TABLE>>];
+Inodo10:1->BLOQUE26
+Inodo10:2->BLOQUE27
+Inodo10:3->BLOQUE28
+BLOQUE29 [label=<<TABLE><TR><TD bgcolor="skyblue">hola3ABCDEFGHIJKLMNOPQRST</TD></TR></TABLE>>];
+BLOQUE30 [label=<<TABLE><TR><TD bgcolor="skyblue">UVWXYZABCDEFGHIJKLMNOPQRS</TD></TR></TABLE>>];
+BLOQUE31 [label=<<TABLE><TR><TD bgcolor="skyblue">TUVWXYZABCDEFGHIJK</TD></TR></TABLE>>];
+Inodo11 [label=<<TABLE BGCOLOR="#F99381"><TR><TD colspan="2">INODO</TD></TR>
+<TR><TD >1</TD><TD port="1"></TD></TR>
+	<TR><TD >2</TD><TD port="2"></TD></TR>
+	<TR><TD >3</TD><TD port="3"></TD></TR>
+	<TR><TD >4</TD><TD port="4"></TD></TR>
+	<TR><TD >SG</TD><TD port="5" bgcolor="lightgreen"></TD></TR>\n</TABLE>>];
+Inodo11:1->BLOQUE29
+Inodo11:2->BLOQUE30
+Inodo11:3->BLOQUE31
+BLOQUE32 [label=<<TABLE><TR><TD bgcolor="skyblue">hola4ABCDEFGHIJKLMNOPQRST</TD></TR></TABLE>>];
+BLOQUE33 [label=<<TABLE><TR><TD bgcolor="skyblue">UVWXYZABCDEFGHIJKLMNOPQRS</TD></TR></TABLE>>];
+BLOQUE34 [label=<<TABLE><TR><TD bgcolor="skyblue">TUVWXYZABCDEFGHIJK</TD></TR></TABLE>>];
+Inodo12 [label=<<TABLE BGCOLOR="#F99381"><TR><TD colspan="2">INODO</TD></TR>
+<TR><TD >1</TD><TD port="1"></TD></TR>
+	<TR><TD >2</TD><TD port="2"></TD></TR>
+	<TR><TD >3</TD><TD port="3"></TD></TR>
+	<TR><TD >4</TD><TD port="4"></TD></TR>
+	<TR><TD >SG</TD><TD port="5" bgcolor="lightgreen"></TD></TR>\n</TABLE>>];
+Inodo12:1->BLOQUE32
+Inodo12:2->BLOQUE33
+Inodo12:3->BLOQUE34
+BLOQUE35 [label=<<TABLE><TR><TD bgcolor="skyblue">hola5ABCDEFGHIJKLMNOPQRST</TD></TR></TABLE>>];
+BLOQUE36 [label=<<TABLE><TR><TD bgcolor="skyblue">UVWXYZABCDEFGHIJKLMNOPQRS</TD></TR></TABLE>>];
+BLOQUE37 [label=<<TABLE><TR><TD bgcolor="skyblue">TUVWXYZABCDEFGHIJK</TD></TR></TABLE>>];
+Inodo13 [label=<<TABLE BGCOLOR="#F99381"><TR><TD colspan="2">INODO</TD></TR>
+<TR><TD >1</TD><TD port="1"></TD></TR>
+	<TR><TD >2</TD><TD port="2"></TD></TR>
+	<TR><TD >3</TD><TD port="3"></TD></TR>
+	<TR><TD >4</TD><TD port="4"></TD></TR>
+	<TR><TD >SG</TD><TD port="5" bgcolor="lightgreen"></TD></TR>\n</TABLE>>];
+Inodo13:1->BLOQUE35
+Inodo13:2->BLOQUE36
+Inodo13:3->BLOQUE37
+BLOQUE38 [label=<<TABLE><TR><TD bgcolor="skyblue">hola6ABCDEFGHIJKLMNOPQRST</TD></TR></TABLE>>];
+BLOQUE39 [label=<<TABLE><TR><TD bgcolor="skyblue">UVWXYZABCDEFGHIJKLMNOPQRS</TD></TR></TABLE>>];
+BLOQUE40 [label=<<TABLE><TR><TD bgcolor="skyblue">TUVWXYZABCDEFGHIJK</TD></TR></TABLE>>];
+Inodo14 [label=<<TABLE BGCOLOR="#F99381"><TR><TD colspan="2">INODO</TD></TR>
+<TR><TD >1</TD><TD port="1"></TD></TR>
+	<TR><TD >2</TD><TD port="2"></TD></TR>
+	<TR><TD >3</TD><TD port="3"></TD></TR>
+	<TR><TD >4</TD><TD port="4"></TD></TR>
+	<TR><TD >SG</TD><TD port="5" bgcolor="lightgreen"></TD></TR>\n</TABLE>>];
+Inodo14:1->BLOQUE38
+Inodo14:2->BLOQUE39
+Inodo14:3->BLOQUE40
+BLOQUE41 [label=<<TABLE><TR><TD bgcolor="skyblue">hola7ABCDEFGHIJKLMNOPQRST</TD></TR></TABLE>>];
+BLOQUE42 [label=<<TABLE><TR><TD bgcolor="skyblue">UVWXYZABCDEFGHIJKLMNOPQRS</TD></TR></TABLE>>];
+BLOQUE43 [label=<<TABLE><TR><TD bgcolor="skyblue">TUVWXYZABCDEFGHIJK</TD></TR></TABLE>>];
+Inodo15 [label=<<TABLE BGCOLOR="#F99381"><TR><TD colspan="2">INODO</TD></TR>
+<TR><TD >1</TD><TD port="1"></TD></TR>
+	<TR><TD >2</TD><TD port="2"></TD></TR>
+	<TR><TD >3</TD><TD port="3"></TD></TR>
+	<TR><TD >4</TD><TD port="4"></TD></TR>
+	<TR><TD >SG</TD><TD port="5" bgcolor="lightgreen"></TD></TR>\n</TABLE>>];
+Inodo15:1->BLOQUE41
+Inodo15:2->BLOQUE42
+Inodo15:3->BLOQUE43
+BLOQUE44 [label=<<TABLE><TR><TD bgcolor="skyblue">hola8ABCDEFGHIJKLMNOPQRST</TD></TR></TABLE>>];
+BLOQUE45 [label=<<TABLE><TR><TD bgcolor="skyblue">UVWXYZABCDEFGHIJKLMNOPQRS</TD></TR></TABLE>>];
+BLOQUE46 [label=<<TABLE><TR><TD bgcolor="skyblue">TUVWXYZABCDEFGHIJK</TD></TR></TABLE>>];
+Inodo16 [label=<<TABLE BGCOLOR="#F99381"><TR><TD colspan="2">INODO</TD></TR>
+<TR><TD >1</TD><TD port="1"></TD></TR>
+	<TR><TD >2</TD><TD port="2"></TD></TR>
+	<TR><TD >3</TD><TD port="3"></TD></TR>
+	<TR><TD >4</TD><TD port="4"></TD></TR>
+	<TR><TD >SG</TD><TD port="5" bgcolor="lightgreen"></TD></TR>\n</TABLE>>];
+Inodo16:1->BLOQUE44
+Inodo16:2->BLOQUE45
+Inodo16:3->BLOQUE46
+DD5 [label=<
+<TABLE BGCOLOR="#EEAD67">
+<TR><TD colspan="2">DD</TD></TR>
+<TR><TD >1</TD><TD port="1">HOLA6.TXT</TD></TR>
+	<TR><TD >2</TD><TD port="2">HOLA7.TXT</TD></TR>
+	<TR><TD >3</TD><TD port="3">HOLA8.TXT</TD></TR>
+	<TR><TD >4</TD><TD port="4"></TD></TR>
+	<TR><TD >5</TD><TD port="5"></TD></TR>
+	<TR><TD >SG</TD><TD port="6" bgcolor="lightgreen"></TD></TR>\n</TABLE>
+>];
+DD5:1->Inodo14
+DD5:2->Inodo15
+DD5:3->Inodo16
+DD4 [label=<
+<TABLE BGCOLOR="#EEAD67">
+<TR><TD colspan="2">DD</TD></TR>
+<TR><TD >1</TD><TD port="1">HOLA1.TXT</TD></TR>
+	<TR><TD >2</TD><TD port="2">HOLA2.TXT</TD></TR>
+	<TR><TD >3</TD><TD port="3">HOLA3.TXT</TD></TR>
+	<TR><TD >4</TD><TD port="4">HOLA4.TXT</TD></TR>
+	<TR><TD >5</TD><TD port="5">HOLA5.TXT</TD></TR>
+	<TR><TD >SG</TD><TD port="6" bgcolor="lightgreen"></TD></TR>\n</TABLE>
+>];
+DD4:6->DD5
+DD4:1->Inodo9
+DD4:2->Inodo10
+DD4:3->Inodo11
+DD4:4->Inodo12
+DD4:5->Inodo13
+AVD9 [label=<
+<TABLE BGCOLOR="#E3EE67">
+<TR><TD colspan="8">Carpeta8</TD></TR>
+<TR>
+	<TD >1</TD>
+	<TD >2</TD>
+	<TD >3</TD>
+	<TD >4</TD>
+	<TD >5</TD>
+	<TD >6</TD>
+	<TD >DD</TD>
+	<TD >SG</TD>
+	</TR>
+  
+	<TR>
+	<TD port="1"></TD>
+	<TD port="2"></TD>
+	<TD port="3"></TD>
+	<TD port="4"></TD>
+	<TD port="5"></TD>
+	<TD port="6"></TD>
+	<TD port="7" bgcolor="skyblue"></TD>
+	<TD port="8" bgcolor="lightgreen"></TD>
+	</TR>\n</TABLE>
+>];
+AVD9:1->AVD10
+AVD9:2->AVD11
+AVD9:3->AVD12
+AVD9:4->AVD13
+AVD9:5->AVD14
+AVD9:6->AVD15
+AVD9:7->DD4
+AVD9:8->AVD16
+AVD7 [label=<
+<TABLE BGCOLOR="#E3EE67">
+<TR><TD colspan="8">/</TD></TR>
+<TR>
+	<TD >1</TD>
+	<TD >2</TD>
+	<TD >3</TD>
+	<TD >4</TD>
+	<TD >5</TD>
+	<TD >6</TD>
+	<TD >DD</TD>
+	<TD >SG</TD>
+	</TR>
+  
+	<TR>
+	<TD port="1"></TD>
+	<TD port="2"></TD>
+	<TD port="3"></TD>
+	<TD port="4"></TD>
+	<TD port="5"></TD>
+	<TD port="6"></TD>
+	<TD port="7" bgcolor="skyblue"></TD>
+	<TD port="8" bgcolor="lightgreen"></TD>
+	</TR>\n</TABLE>
+>];
+AVD7:1->AVD8
+AVD7:2->AVD9
+BLOQUE47 [label=<<TABLE><TR><TD bgcolor="skyblue">1,G,root
+1,U,root,root,20</TD></TR></TABLE>>];
+BLOQUE48 [label=<<TABLE><TR><TD bgcolor="skyblue">1801527
+</TD></TR></TABLE>>];
+Inodo17 [label=<<TABLE BGCOLOR="#F99381"><TR><TD colspan="2">INODO</TD></TR>
+<TR><TD >1</TD><TD port="1"></TD></TR>
+	<TR><TD >2</TD><TD port="2"></TD></TR>
+	<TR><TD >3</TD><TD port="3"></TD></TR>
+	<TR><TD >4</TD><TD port="4"></TD></TR>
+	<TR><TD >SG</TD><TD port="5" bgcolor="lightgreen"></TD></TR>\n</TABLE>>];
+Inodo17:1->BLOQUE47
+Inodo17:2->BLOQUE48
+DD6 [label=<
+<TABLE BGCOLOR="#EEAD67">
+<TR><TD colspan="2">DD</TD></TR>
+<TR><TD >1</TD><TD port="1">user.txt</TD></TR>
+	<TR><TD >2</TD><TD port="2"></TD></TR>
+	<TR><TD >3</TD><TD port="3"></TD></TR>
+	<TR><TD >4</TD><TD port="4"></TD></TR>
+	<TR><TD >5</TD><TD port="5"></TD></TR>
+	<TR><TD >SG</TD><TD port="6" bgcolor="lightgreen"></TD></TR>\n</TABLE>
+>];
+DD6:1->Inodo17
+AVD0 [label=<
+<TABLE BGCOLOR="#E3EE67">
+<TR><TD colspan="8">/</TD></TR>
+<TR>
+	<TD >1</TD>
+	<TD >2</TD>
+	<TD >3</TD>
+	<TD >4</TD>
+	<TD >5</TD>
+	<TD >6</TD>
+	<TD >DD</TD>
+	<TD >SG</TD>
+	</TR>
+  
+	<TR>
+	<TD port="1"></TD>
+	<TD port="2"></TD>
+	<TD port="3"></TD>
+	<TD port="4"></TD>
+	<TD port="5"></TD>
+	<TD port="6"></TD>
+	<TD port="7" bgcolor="skyblue"></TD>
+	<TD port="8" bgcolor="lightgreen"></TD>
+	</TR>\n</TABLE>
+>];
+AVD0:1->AVD1
+AVD0:2->AVD2
+AVD0:3->AVD3
+AVD0:4->AVD4
+AVD0:5->AVD5
+AVD0:6->AVD6
+AVD0:7->DD6
+AVD0:8->AVD7
+}

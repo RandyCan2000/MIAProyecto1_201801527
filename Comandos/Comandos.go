@@ -1,10 +1,10 @@
-package comandos
+package Comandos
 
 import (
 	Estruct "Proyecto1MIA/Estructuras"
 	"bytes"
 	"encoding/binary"
-	"fmt"
+	"io/ioutil"
 	"log"
 	"math/rand"
 	"os"
@@ -28,13 +28,38 @@ func EXEC(ExecSplited []string) {
 	if len(ExecSplited) >= 2 {
 		if strings.ToUpper(ExecSplited[0]) == "-PATH" {
 			if ExecSplited[1] == "" {
-				colorstring.Println("[red]No hay una direccion")
-				colorstring.Println("[red]Se Esperaba exec -path->\"path\"")
+				colorstring.Println("[red]\tNo hay una direccion")
+				colorstring.Println("[red]\tSe Esperaba exec -path->\"path\"")
 			} else {
 				var Extension []string = strings.Split(ExecSplited[1], ".")
 				if strings.TrimSpace(Extension[len(Extension)-1]) == "mia" {
 					colorstring.Println("[green]" + ExecSplited[1])
-					//Abrir archivos con comando y llamar a parser de analizador
+					data, err := ioutil.ReadFile(removeCom(ExecSplited[1]))
+					if err != nil {
+						colorstring.Println("File reading error: " + err.Error())
+						return
+					}
+					ScriptSplit := strings.Split(string(data), "\n")
+					var ScriptsplitAndTrim []string
+					for key, _ := range ScriptSplit {
+						ScriptsplitAndTrim = append(ScriptsplitAndTrim, strings.TrimSpace(ScriptSplit[key]))
+					}
+					onlyScript := ""
+					for key, _ := range ScriptsplitAndTrim {
+						contain := strings.Contains(ScriptsplitAndTrim[key], "\\*")
+						if contain == true {
+							quitN := strings.Split(ScriptsplitAndTrim[key], "\\*")
+							onlyScript += quitN[0]
+						} else {
+							onlyScript += ScriptsplitAndTrim[key]
+							if onlyScript != "" {
+								colorstring.Print("[green]Script: ")
+								println(onlyScript)
+								Parser(onlyScript)
+							}
+							onlyScript = ""
+						}
+					}
 				} else {
 					colorstring.Println("[red]El archivo no es extension .mia")
 				}
@@ -45,6 +70,24 @@ func EXEC(ExecSplited []string) {
 		colorstring.Println("[red]Se Esperaba exec -path->\"path\"")
 	}
 }
+
+/*
+if string(ScriptsplitAndTrim[key][len(ScriptsplitAndTrim[key])-1]) == "*" {
+							if string(ScriptsplitAndTrim[key][len(ScriptsplitAndTrim[key])-2]) == "/" {
+								for q := 0; q < len(ScriptsplitAndTrim[key])-2; {
+									onlyScript += string(ScriptsplitAndTrim[key][q])
+								}
+							} else {
+								onlyScript += ScriptsplitAndTrim[key]
+								Parser(onlyScript)
+								onlyScript = ""
+							}
+						} else {
+							onlyScript += ScriptsplitAndTrim[key]
+							Parser(onlyScript)
+							onlyScript = ""
+						}
+*/
 
 //MKDISK Comando script de MIA
 func MKDISK(path string, size string, name string, unit string) bool {
@@ -105,8 +148,8 @@ func MKDISK(path string, size string, name string, unit string) bool {
 	prt.Part_type = 0
 	//MBR
 	mbr := Estruct.MBR{Mbr_tamaño: size2 + 1}
-	date := time.Now()
-	fecha := strconv.Itoa(date.Day()) + "/" + date.Month().String() + "/" + strconv.Itoa(date.Year()) + "-H:" + strconv.Itoa(date.Hour()) + "-M:" + strconv.Itoa(date.Minute())
+	date := time.Now().String()
+	fecha := strings.Split(date, " ")[0] + " " + strings.Split(strings.Split(date, " ")[1], ":")[0] + ":" + strings.Split(strings.Split(date, " ")[1], ":")[1]
 	copy(mbr.Mbr_fecha_creacion[:], fecha)
 	mbr.Mbr_disk_signature = int64(r1.Intn(1000))
 
@@ -114,20 +157,19 @@ func MKDISK(path string, size string, name string, unit string) bool {
 	startP1 := unsafe.Sizeof(mbr.Mbr_tamaño) + unsafe.Sizeof(mbr.Mbr_fecha_creacion) + unsafe.Sizeof(mbr.Mbr_disk_signature)
 	prt.Part_start = int64(startP1)
 	mbr.Mbr_partition_1 = prt
-	println(startP1)
 	//part2
 	startP2 := startP1 + unsafe.Sizeof(Estruct.Partition{})
-	println(startP2)
+
 	prt.Part_start = int64(startP2)
 	mbr.Mbr_partition_2 = prt
 	//part3
 	startP3 := startP2 + unsafe.Sizeof(Estruct.Partition{})
-	println(startP3)
+
 	prt.Part_start = int64(startP3)
 	mbr.Mbr_partition_3 = prt
 	//part3
 	startP4 := startP3 + unsafe.Sizeof(Estruct.Partition{})
-	println(startP4)
+
 	prt.Part_start = int64(startP4)
 	mbr.Mbr_partition_4 = prt
 
@@ -147,7 +189,10 @@ func RMDISK(path string) bool {
 		colorstring.Println("[red]El archivo no es extencion .dsk")
 		return false
 	}
-	//TODO crear mensaje de confirmacion para eliminar la particion
+	hecho := MensajeConfirmacion("¿Seguro desea Eliminar el disco? [Y/N]", "Y")
+	if hecho == false {
+		return true
+	}
 	err := os.Remove(path)
 	if err != nil {
 		colorstring.Println("[red]El disco no se pudo borra con exito" + err.Error())
@@ -160,17 +205,16 @@ func RMDISK(path string) bool {
 //FDISK Comando script de MIA
 func FDISK(path string, size string, unit string, tipe string, fit string, delete string, name string, add string) bool {
 	file, err := os.Open(removeCom(path))
-	defer file.Close()
 	if err != nil {
 		colorstring.Println("[red]Ocurrio un error al abrir el Disco " + path)
 		return false
 	}
+	defer file.Close()
 	mbr := Estruct.MBR{}
 	A := ReadBytes(file, int(unsafe.Sizeof(mbr)))
-	fmt.Println(A)
 	buffer := bytes.NewBuffer(A)
 	err = binary.Read(buffer, binary.BigEndian, &mbr)
-	writeParticion(mbr)
+	//writeParticion(mbr)
 	if err != nil {
 		colorstring.Println("[red]Ocurrio un error al leer el Disco " + err.Error())
 		return false
@@ -251,71 +295,103 @@ func FDISK(path string, size string, unit string, tipe string, fit string, delet
 				colorstring.Println("[red]Unit indefinido")
 				return false
 			}
-			sizeP1 := int64(mbr.Mbr_partition_1.Part_size)
-			sizeP2 := int64(mbr.Mbr_partition_2.Part_size)
-			sizeP3 := int64(mbr.Mbr_partition_3.Part_size)
-			sizeP4 := int64(mbr.Mbr_partition_4.Part_size)
+			var sizeP1, sizeP2, sizeP3, sizeP4 int64 = 0, 0, 0, 0
+			if mbr.Mbr_partition_1.Part_status == 'A' {
+				sizeP1 = int64(mbr.Mbr_partition_1.Part_size)
+			}
+			if mbr.Mbr_partition_2.Part_status == 'A' {
+				sizeP2 = int64(mbr.Mbr_partition_2.Part_size)
+			}
+			if mbr.Mbr_partition_3.Part_status == 'A' {
+				sizeP3 = int64(mbr.Mbr_partition_3.Part_size)
+			}
+			if mbr.Mbr_partition_4.Part_status == 'A' {
+				sizeP4 = int64(mbr.Mbr_partition_4.Part_size)
+			}
 			sizeTotal := int64(Size) + sizeP1 + sizeP2 + sizeP3 + sizeP4
 			if sizeTotal > int64(mbr.Mbr_tamaño) && strings.ToUpper(tipe)[0] != 'L' {
 				colorstring.Println("[red]El tamanio de la particion sobrepasa la del disco")
 				return false
 			}
 			if string(mbr.Mbr_partition_1.Part_status) != "A" {
-				copy(mbr.Mbr_partition_1.Part_name[:], strings.ToUpper(name))
-				mbr.Mbr_partition_1.Part_fit = strings.ToUpper(fit)[0]
-				mbr.Mbr_partition_1.Part_size = int64(Size)
-				mbr.Mbr_partition_1.Part_status = 'A'
-				mbr.Mbr_partition_1.Part_type = strings.ToUpper(tipe)[0]
-				mbr.Mbr_partition_1.Part_start = int64(unsafe.Sizeof(mbr)) + 20
-				createPartition(file, mbr)
-				if mbr.Mbr_partition_1.Part_type == 'E' {
-					ebr := Estruct.EBR{Part_next: -1}
-					ebr.Part_start = int64(unsafe.Sizeof(mbr)) + 20
-					createPartitionLogic(file, ebr, int64(unsafe.Sizeof(mbr))+20)
+				if mbr.Mbr_partition_1.Part_size >= int64(Size) || mbr.Mbr_partition_1.Part_size == 0 {
+					copy(mbr.Mbr_partition_1.Part_name[:], strings.ToUpper(name))
+					mbr.Mbr_partition_1.Part_fit = strings.ToUpper(fit)[0]
+					mbr.Mbr_partition_1.Part_size = int64(Size)
+					mbr.Mbr_partition_1.Part_status = 'A'
+					mbr.Mbr_partition_1.Part_type = strings.ToUpper(tipe)[0]
+					mbr.Mbr_partition_1.Part_start = int64(unsafe.Sizeof(mbr))
+					createPartition(file, mbr)
+					if mbr.Mbr_partition_1.Part_type == 'E' {
+						ebr := Estruct.EBR{Part_next: -1}
+						ebr.Part_start = int64(unsafe.Sizeof(mbr))
+						createPartitionLogic(file, ebr, ebr.Part_start)
+					}
+					return true
+				} else {
+					colorstring.Println("[red]El tamaño de la particion no cabe en la particion 1")
+					return false
 				}
-				return true
-			} else if string(mbr.Mbr_partition_2.Part_status) != "A" {
-				copy(mbr.Mbr_partition_2.Part_name[:], strings.ToUpper(name))
-				mbr.Mbr_partition_2.Part_fit = strings.ToUpper(fit)[0]
-				mbr.Mbr_partition_2.Part_size = int64(Size)
-				mbr.Mbr_partition_2.Part_status = 'A'
-				mbr.Mbr_partition_2.Part_type = strings.ToUpper(tipe)[0]
-				mbr.Mbr_partition_2.Part_start = int64(unsafe.Sizeof(mbr)) + 20
-				createPartition(file, mbr)
-				if mbr.Mbr_partition_2.Part_type == 'E' {
-					ebr := Estruct.EBR{Part_next: -1}
-					ebr.Part_start = int64(unsafe.Sizeof(mbr)) + 20
-					createPartitionLogic(file, ebr, int64(unsafe.Sizeof(mbr))+20)
+			}
+			if string(mbr.Mbr_partition_2.Part_status) != "A" {
+				if mbr.Mbr_partition_2.Part_size >= int64(Size) || mbr.Mbr_partition_2.Part_size == 0 {
+					copy(mbr.Mbr_partition_2.Part_name[:], strings.ToUpper(name))
+					mbr.Mbr_partition_2.Part_fit = strings.ToUpper(fit)[0]
+					mbr.Mbr_partition_2.Part_size = int64(Size)
+					mbr.Mbr_partition_2.Part_status = 'A'
+					mbr.Mbr_partition_2.Part_type = strings.ToUpper(tipe)[0]
+					mbr.Mbr_partition_2.Part_start = int64(unsafe.Sizeof(mbr)) + mbr.Mbr_partition_1.Part_size
+					createPartition(file, mbr)
+					if mbr.Mbr_partition_2.Part_type == 'E' {
+						ebr := Estruct.EBR{Part_next: -1}
+						ebr.Part_start = mbr.Mbr_partition_2.Part_start
+						createPartitionLogic(file, ebr, ebr.Part_start)
+					}
+					return true
+				} else {
+					colorstring.Println("[red]El tamaño de la particion no cabe en la particion 2")
+					return false
 				}
-				return true
-			} else if string(mbr.Mbr_partition_3.Part_status) != "A" {
-				copy(mbr.Mbr_partition_3.Part_name[:], strings.ToUpper(name))
-				mbr.Mbr_partition_3.Part_fit = strings.ToUpper(fit)[0]
-				mbr.Mbr_partition_3.Part_size = int64(Size)
-				mbr.Mbr_partition_3.Part_status = 'A'
-				mbr.Mbr_partition_3.Part_type = strings.ToUpper(tipe)[0]
-				mbr.Mbr_partition_3.Part_start = int64(unsafe.Sizeof(mbr)) + 20
-				createPartition(file, mbr)
-				if mbr.Mbr_partition_3.Part_type == 'E' {
-					ebr := Estruct.EBR{Part_next: -1}
-					ebr.Part_start = int64(unsafe.Sizeof(mbr)) + 20
-					createPartitionLogic(file, ebr, int64(unsafe.Sizeof(mbr))+20)
+			}
+			if string(mbr.Mbr_partition_3.Part_status) != "A" {
+				if mbr.Mbr_partition_3.Part_size >= int64(Size) || mbr.Mbr_partition_3.Part_size == 0 {
+					copy(mbr.Mbr_partition_3.Part_name[:], strings.ToUpper(name))
+					mbr.Mbr_partition_3.Part_fit = strings.ToUpper(fit)[0]
+					mbr.Mbr_partition_3.Part_size = int64(Size)
+					mbr.Mbr_partition_3.Part_status = 'A'
+					mbr.Mbr_partition_3.Part_type = strings.ToUpper(tipe)[0]
+					mbr.Mbr_partition_3.Part_start = int64(unsafe.Sizeof(mbr)) + mbr.Mbr_partition_1.Part_size + mbr.Mbr_partition_2.Part_size
+					createPartition(file, mbr)
+					if mbr.Mbr_partition_3.Part_type == 'E' {
+						ebr := Estruct.EBR{Part_next: -1}
+						ebr.Part_start = mbr.Mbr_partition_3.Part_start
+						createPartitionLogic(file, ebr, ebr.Part_start)
+					}
+					return true
+				} else {
+					colorstring.Println("[red]El tamaño de la particion no cabe en la particion 3")
+					return false
 				}
-				return true
-			} else if string(mbr.Mbr_partition_4.Part_status) != "A" {
-				copy(mbr.Mbr_partition_4.Part_name[:], strings.ToUpper(name))
-				mbr.Mbr_partition_4.Part_fit = strings.ToUpper(fit)[0]
-				mbr.Mbr_partition_4.Part_size = int64(Size)
-				mbr.Mbr_partition_4.Part_status = 'A'
-				mbr.Mbr_partition_4.Part_type = strings.ToUpper(tipe)[0]
-				mbr.Mbr_partition_4.Part_start = int64(unsafe.Sizeof(mbr)) + 20
-				createPartition(file, mbr)
-				if mbr.Mbr_partition_4.Part_type == 'E' {
-					ebr := Estruct.EBR{Part_next: -1}
-					ebr.Part_start = int64(unsafe.Sizeof(mbr)) + 20
-					createPartitionLogic(file, ebr, int64(unsafe.Sizeof(mbr))+20)
+			}
+			if string(mbr.Mbr_partition_4.Part_status) != "A" {
+				if mbr.Mbr_partition_4.Part_size >= int64(Size) || mbr.Mbr_partition_4.Part_size == 0 {
+					copy(mbr.Mbr_partition_4.Part_name[:], strings.ToUpper(name))
+					mbr.Mbr_partition_4.Part_fit = strings.ToUpper(fit)[0]
+					mbr.Mbr_partition_4.Part_size = int64(Size)
+					mbr.Mbr_partition_4.Part_status = 'A'
+					mbr.Mbr_partition_4.Part_type = strings.ToUpper(tipe)[0]
+					mbr.Mbr_partition_4.Part_start = int64(unsafe.Sizeof(mbr)) + mbr.Mbr_partition_1.Part_size + mbr.Mbr_partition_2.Part_size + mbr.Mbr_partition_3.Part_size
+					createPartition(file, mbr)
+					if mbr.Mbr_partition_4.Part_type == 'E' {
+						ebr := Estruct.EBR{Part_next: -1}
+						ebr.Part_start = mbr.Mbr_partition_4.Part_start
+						createPartitionLogic(file, ebr, ebr.Part_start)
+					}
+					return true
+				} else {
+					colorstring.Println("[red]El tamaño de la particion no cabe en la particion 4")
+					return false
 				}
-				return true
 			} else {
 				colorstring.Println("[red]No se encontraron particiones vacias")
 				return false
@@ -366,7 +442,7 @@ func FDISK(path string, size string, unit string, tipe string, fit string, delet
 			ebrInsert.Part_size = int64(Size)
 			ebrInsert.Part_status = 'A'
 			RecursivoFindLogic(file, ebr, ebrInsert, extSize, ebrInsert.Part_size+ebr.Part_size)
-			showLogicRec(file, ebr)
+			//showLogicRec(file, ebr)
 			return true
 		}
 	}
@@ -387,13 +463,12 @@ func FDISK(path string, size string, unit string, tipe string, fit string, delet
 		if mbr.Mbr_partition_1.Part_name == NAME {
 			if strings.ToUpper(strings.TrimSpace(delete)) == "FAST" {
 				mbr.Mbr_partition_1.Part_fit = ' '
-				mbr.Mbr_partition_1.Part_size = 0
 				mbr.Mbr_partition_1.Part_start = 0
 				mbr.Mbr_partition_1.Part_status = ' '
 				mbr.Mbr_partition_1.Part_type = ' '
 				copy(mbr.Mbr_partition_1.Part_name[:], "                ")
 			} else {
-				mbr.Mbr_partition_1 = Estruct.Partition{}
+				mbr.Mbr_partition_1 = Estruct.Partition{Part_size: mbr.Mbr_partition_1.Part_size}
 			}
 			createPartition(file, mbr)
 			colorstring.Println("[green]Eliminado con exito")
@@ -401,13 +476,12 @@ func FDISK(path string, size string, unit string, tipe string, fit string, delet
 		} else if mbr.Mbr_partition_2.Part_name == NAME {
 			if strings.ToUpper(strings.TrimSpace(delete)) == "FAST" {
 				mbr.Mbr_partition_2.Part_fit = ' '
-				mbr.Mbr_partition_2.Part_size = 0
 				mbr.Mbr_partition_2.Part_start = 0
 				mbr.Mbr_partition_2.Part_status = ' '
 				mbr.Mbr_partition_2.Part_type = ' '
 				copy(mbr.Mbr_partition_2.Part_name[:], "                ")
 			} else {
-				mbr.Mbr_partition_2 = Estruct.Partition{}
+				mbr.Mbr_partition_2 = Estruct.Partition{Part_size: mbr.Mbr_partition_2.Part_size}
 			}
 			createPartition(file, mbr)
 			colorstring.Println("[green]Eliminado con exito")
@@ -415,13 +489,12 @@ func FDISK(path string, size string, unit string, tipe string, fit string, delet
 		} else if mbr.Mbr_partition_3.Part_name == NAME {
 			if strings.ToUpper(strings.TrimSpace(delete)) == "FAST" {
 				mbr.Mbr_partition_3.Part_fit = ' '
-				mbr.Mbr_partition_3.Part_size = 0
 				mbr.Mbr_partition_3.Part_start = 0
 				mbr.Mbr_partition_3.Part_status = ' '
 				mbr.Mbr_partition_3.Part_type = ' '
 				copy(mbr.Mbr_partition_3.Part_name[:], "                ")
 			} else {
-				mbr.Mbr_partition_3 = Estruct.Partition{}
+				mbr.Mbr_partition_3 = Estruct.Partition{Part_size: mbr.Mbr_partition_3.Part_size}
 			}
 			createPartition(file, mbr)
 			colorstring.Println("[green]Eliminado con exito")
@@ -429,13 +502,12 @@ func FDISK(path string, size string, unit string, tipe string, fit string, delet
 		} else if mbr.Mbr_partition_4.Part_name == NAME {
 			if strings.ToUpper(strings.TrimSpace(delete)) == "FAST" {
 				mbr.Mbr_partition_4.Part_fit = ' '
-				mbr.Mbr_partition_4.Part_size = 0
 				mbr.Mbr_partition_4.Part_start = 0
 				mbr.Mbr_partition_4.Part_status = ' '
 				mbr.Mbr_partition_4.Part_type = ' '
 				copy(mbr.Mbr_partition_4.Part_name[:], "                ")
 			} else {
-				mbr.Mbr_partition_4 = Estruct.Partition{}
+				mbr.Mbr_partition_4 = Estruct.Partition{Part_size: mbr.Mbr_partition_4.Part_size}
 			}
 			createPartition(file, mbr)
 			colorstring.Println("[green]Eliminado con exito")
@@ -551,7 +623,6 @@ func FDISK(path string, size string, unit string, tipe string, fit string, delet
 
 //MOUNT Comando script de MIA
 func MOUNT(path string, name string) bool {
-	println(Estruct.NumeroLetra)
 	if path == "" && name == "" {
 		for _, Value := range ParticionesMontada {
 			if Value.Name != "" {
@@ -598,8 +669,6 @@ func MOUNT(path string, name string) bool {
 					PartMontNew.Id = "vd" + Disco.Letra + strconv.Itoa(int(Disco.Numero))
 					DiscosMontados[i].Numero = Disco.Numero + 1
 					ParticionesMontada = append(ParticionesMontada, PartMontNew)
-					println(len(DiscosMontados))
-					println(len(ParticionesMontada))
 					colorstring.Println("[green]Se monto con exito")
 					return true
 				} else if mbr.Mbr_partition_3.Part_name == NAME && mbr.Mbr_partition_3.Part_type != 'E' {
@@ -747,19 +816,6 @@ func UNMOUNT(Ids []string) bool {
 	return true
 }
 
-//removeCom es el encargado de quitarle las comillas a un texto
-func removeCom(path string) string {
-	if strings.TrimSpace(string(path[0])) == "\"" {
-		path2 := strings.TrimSpace(strings.Split(path, "\"")[1])
-		path = path2
-	}
-	if strings.TrimSpace(string(path[0])) == "'" {
-		path2 := strings.TrimSpace(strings.Split(path, "'")[1])
-		path = path2
-	}
-	return path
-}
-
 //writeParticion encargado de mostrar contenido de mbr
 func writeParticion(mbr Estruct.MBR) {
 	println(mbr.Mbr_disk_signature)
@@ -800,7 +856,7 @@ func createPartition(file *os.File, mbr Estruct.MBR) {
 	var WriteStrucBinary bytes.Buffer
 	err := binary.Write(&WriteStrucBinary, binary.BigEndian, mbr2)
 	if err != nil {
-		println(err.Error())
+		colorstring.Println("[red]\t" + err.Error())
 	}
 	WriteByte(file2, WriteStrucBinary.Bytes())
 }
@@ -814,7 +870,7 @@ func createPartitionLogic(file *os.File, ebr Estruct.EBR, partStar int64) {
 	var WriteStrucBinary bytes.Buffer
 	err := binary.Write(&WriteStrucBinary, binary.BigEndian, ebr2)
 	if err != nil {
-		println(err.Error())
+		colorstring.Println("[red]\t" + err.Error())
 	}
 	WriteByte(file2, WriteStrucBinary.Bytes())
 }
@@ -831,10 +887,10 @@ func RecursivoFindLogic(file *os.File, ebr Estruct.EBR, ebrInsert Estruct.EBR, E
 					ebr.Part_fit = ebrInsert.Part_fit
 					ebr.Part_size = ebrInsert.Part_size
 					ebr.Part_status = ebrInsert.Part_status
-					ebr.Part_next = ebr.Part_start + int64(unsafe.Sizeof(Estruct.EBR{})) + 1
+					ebr.Part_next = ebr.Part_start + int64(unsafe.Sizeof(Estruct.EBR{}))
 					createPartitionLogic(file, ebr, ebr.Part_start)
 					ebr2 := Estruct.EBR{Part_next: -1}
-					ebr2.Part_start = ebr.Part_start + int64(unsafe.Sizeof(Estruct.EBR{})) + 1
+					ebr2.Part_start = ebr.Part_start + int64(unsafe.Sizeof(Estruct.EBR{}))
 					createPartitionLogic(file, ebr2, ebr2.Part_start)
 				}
 			} else {
@@ -894,6 +950,7 @@ func FinPartLogic(file *os.File, ebr Estruct.EBR, NAME [16]byte) bool {
 			err := binary.Read(buffer, binary.BigEndian, &ebr2)
 			if err != nil {
 				colorstring.Println("[red]Ocurrio un error al leer el Disco " + err.Error())
+				return false
 			}
 			return FinPartLogic(file, ebr2, NAME)
 		} else if ebr.Part_next == -1 {
@@ -907,13 +964,15 @@ func FinPartLogic(file *os.File, ebr Estruct.EBR, NAME [16]byte) bool {
 func RecDeletePartitionLogic(file *os.File, ebr Estruct.EBR, name [16]byte, tipeDelete string) int64 {
 	if ebr.Part_name == name {
 		if tipeDelete == "FAST" {
-			ebr2 := Estruct.EBR{Part_next: ebr.Part_next}
-			ebr2.Part_size = ebr.Part_size
+			ebr.Part_status = ' '
+			createPartitionLogic(file, ebr, ebr.Part_start)
+			return 0
+		} else if tipeDelete == "FULL" {
+			ebr2 := Estruct.EBR{Part_size: ebr.Part_size}
+			ebr2.Part_next = ebr.Part_next
 			ebr2.Part_start = ebr.Part_start
 			createPartitionLogic(file, ebr2, ebr.Part_start)
 			return 0
-		} else if tipeDelete == "FULL" {
-			return ebr.Part_next
 		}
 	} else {
 		if ebr.Part_next == -1 {
@@ -946,10 +1005,9 @@ func RecDeletePartitionLogic(file *os.File, ebr Estruct.EBR, name [16]byte, tipe
 
 //WriteByte metodo que Escribe en el archivo
 func WriteByte(file *os.File, bytes []byte) {
-	println(bytes)
 	_, err := file.Write(bytes)
 	if err != nil {
-		colorstring.Println("[red]Ocurrio un error al escribir en el archivo " + file.Name() + "\n" + err.Error())
+		colorstring.Println("[red]Ocurrio un error al escribir en el archivo " + "\n" + err.Error())
 	}
 
 }
