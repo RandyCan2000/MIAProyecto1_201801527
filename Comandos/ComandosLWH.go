@@ -143,6 +143,7 @@ func MKFS(id string, tipe string, unit string, add string) bool {
 	}
 	//Escribir user.txt
 	writeUsertxt(ParticionMontada.Path, SBwrite)
+	EscribirEnBitacora(ParticionMontada.Path, SBwrite, "MKFILE", 0, "/user.txt", "1,G,root\n"+"1,U,root,root,201801527\n")
 	return (echo && echo1)
 }
 
@@ -285,12 +286,15 @@ func MKDIR(id string, path string, p bool) bool {
 		return false
 	}
 	Carpetas := strings.Split(path, "/")
-	RecorrerYCrearAVD(ParticionMonta.Path, SB, Carpetas, 1, p, AVDRaiz, SB.Sb_ap_arbol_directorio)
+	_, i := RecorrerYCrearAVD(ParticionMonta.Path, SB, Carpetas, 1, p, AVDRaiz, SB.Sb_ap_arbol_directorio)
+	if i > 0 {
+		EscribirEnBitacora(ParticionMonta.Path, SB, "MKDIR", 1, path, "")
+	}
 	return true
 }
 
 //MKFILE Crea un archivo en la carpeta path
-func MKFILE(id string, path string, CrearTodo bool, size string, cont string) bool {
+func MKFILE(id string, path string, CrearTodo bool, size string, cont string, Pregunta bool) bool {
 	ABECEDARIO := "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 	SIZE, err := strconv.Atoi(size)
@@ -411,8 +415,9 @@ func MKFILE(id string, path string, CrearTodo bool, size string, cont string) bo
 		FileInfo := Estruct.DDInfo{DDfileApInodo: -1}
 		copy(FileInfo.DDfileDateUpdate[:], StringFechaActual())
 		copy(FileInfo.DDfileNombre[:], pathConfile[len(pathConfile)-1])
-		RecorrerYCrearDD(ParticionMonta.Path, SB, FileInfo, DD, AVDFinal.AvdApDetalleDirectorio, cont)
+		RecorrerYCrearDD(ParticionMonta.Path, SB, FileInfo, DD, AVDFinal.AvdApDetalleDirectorio, cont, Pregunta)
 	}
+	EscribirEnBitacora(ParticionMonta.Path, SB, "MKFILE", 0, path, cont)
 	return true
 }
 
@@ -507,6 +512,8 @@ func REP(id string, nombre string, path string, ruta string) bool {
 			RutaSplit := strings.Split(RUTA, "/")
 			TREEDIRECTORIOS(ParticionMonta.Path, SB, path, Extencion[len(Extencion)-1], RutaSplit)
 		}
+	} else if nombre == "MBR" {
+		MBRG(ParticionMonta.Path, SB, path, Extencion[len(Extencion)-1])
 	}
 
 	return true
@@ -676,11 +683,11 @@ func MKGRP(id string, name string) bool {
 	}
 	INDICEMAY++
 	TEXTO += strconv.Itoa(INDICEMAY) + ",G," + name + "\n"
-	MKFILE(id, "/user.txt", true, "", TEXTO)
+	MKFILE(id, "/user.txt", true, "", TEXTO, true)
 	return true
 }
 
-//MKGRP Crea un grupo en archivo user.txt
+//RMGRP Crea un grupo en archivo user.txt
 func RMGRP(id string, name string) bool {
 	if UserLogueado.ID_user != 1 {
 		colorstring.Println("[red]\tSolo el usuario root puede usar este script")
@@ -753,7 +760,7 @@ func RMGRP(id string, name string) bool {
 			}
 		}
 	}
-	MKFILE(id, "/user.txt", true, "", NTEXTO)
+	MKFILE(id, "/user.txt", true, "", NTEXTO, true)
 	return true
 }
 
@@ -834,7 +841,7 @@ func MKUSER(id string, user string, password string, grupo string) bool {
 		return false
 	}
 	NTEXTO += strconv.Itoa(IDMay+1) + ",U," + grupo + "," + user + "," + password + "\n"
-	MKFILE(id, "/user.txt", true, "", NTEXTO)
+	MKFILE(id, "/user.txt", true, "", NTEXTO, true)
 	return true
 }
 
@@ -904,7 +911,7 @@ func RMUSR(id string, usuarios string) bool {
 			}
 		}
 	}
-	MKFILE(id, "/user.txt", true, "", NTEXTO)
+	MKFILE(id, "/user.txt", true, "", NTEXTO, true)
 	return true
 }
 
@@ -951,9 +958,9 @@ func CP(id string, path string, dest string) bool {
 	RutaSplit := strings.Split(path, "/")
 	_, _, _, TEXTO := FindFile(ParticionMonta.Path, RutaSplit, 1, AVDRaiz)
 	if dest[len(dest)-1] == '/' {
-		MKFILE(id, dest+RutaSplit[len(RutaSplit)-1], false, "", TEXTO)
+		MKFILE(id, dest+RutaSplit[len(RutaSplit)-1], false, "", TEXTO, true)
 	} else {
-		MKFILE(id, dest+"/"+RutaSplit[len(RutaSplit)-1], false, "", TEXTO)
+		MKFILE(id, dest+"/"+RutaSplit[len(RutaSplit)-1], false, "", TEXTO, true)
 	}
 	return true
 }
@@ -1006,7 +1013,7 @@ func MV(id string, idDestiny string, path string, pathDestiny string) bool {
 	} else {
 		DESTINO = pathDestiny + "/" + RutaSplit[len(RutaSplit)-1]
 	}
-	hecho := MKFILE(idDestiny, DESTINO, false, "", TEXTO)
+	hecho := MKFILE(idDestiny, DESTINO, false, "", TEXTO, true)
 	if hecho == false {
 		colorstring.Println("[red]\tNo se logro mover el archivo")
 		return false
@@ -1118,13 +1125,13 @@ func LOSS(id string) bool {
 	if err != nil {
 		colorstring.Println("[red]Error al abrir el archivo")
 	}
-	file.Seek(PartStartParticion, 0)
+	file.Seek(PartStartParticion+int64(int(unsafe.Sizeof(Estruct.SuperBoot{}))), 0)
 	var cero byte = 0
 	Ins := &cero
 	var binario bytes.Buffer
 	binary.Write(&binario, binary.BigEndian, Ins)
 	colorstring.Println("[blue]\tFORMATEANDO...")
-	for i := PartStartParticion; i < ParticionMonta.CopySB; i++ {
+	for i := PartStartParticion + int64(int(unsafe.Sizeof(Estruct.SuperBoot{}))); i < SB.Sb_ap_log; i++ {
 		WriteByte(file, binario.Bytes())
 	}
 	colorstring.Println("[blue]\tFORMATEO COMPLETADO EXITOSAMENTE")
@@ -1212,23 +1219,49 @@ func REC(id string) bool {
 		colorstring.Println("\t[red]No se encontro el Inicio de la particion")
 		return false
 	}
-	SB, ErrSB := ReadSB(ParticionMonta.Path, ParticionMonta.CopySB)
+	SB, ErrSB := ReadSB(ParticionMonta.Path, PartStartParticion)
 	if ErrSB != nil {
 		colorstring.Println("\t[red]Error al abrir leer el super boot")
 		return false
 	}
-	WriteSB(ParticionMonta.Path, SB, PartStartParticion)
+	var mkdir [16]byte
+	var mkfile [16]byte
+	copy(mkdir[:], "MKDIR")
+	copy(mkfile[:], "MKFILE")
 	Inicio := SB.Sb_ap_log
 	Final := (SB.Sb_ap_log + (SB.Sb_arbol_virtual_count * int64(unsafe.Sizeof(Estruct.Bitacora{})))) - int64(unsafe.Sizeof(Estruct.Bitacora{}))
 	SizeBitacora := int64(unsafe.Sizeof(Estruct.Bitacora{}))
+	AVDRAIZ := Estruct.AVD{AvdProper: int64(UserLogueado.ID_user)}
+	copy(AVDRAIZ.AvdNombreDirectorio[:], "/")
+	WriteAVD(ParticionMonta.Path, AVDRAIZ, SB.Sb_ap_arbol_directorio)
+	WriteOneByteUno(ParticionMonta.Path, SB.Sb_ap_bitmap_arbol_directorio)
 	var i int64
-	var libre [16]byte
 	for i = Inicio; i <= Final; i = i + SizeBitacora {
 		LOG, _ := ReadLog(ParticionMonta.Path, i)
-		if LOG.LogNombre == libre {
-			break
+		if LOG.LogTipoOperacion == mkdir {
+			name := ""
+			for _, char := range LOG.LogNombre {
+				if char != 0 {
+					name += string(char)
+				}
+			}
+			MKDIR(id, name, true)
+		} else if LOG.LogTipoOperacion == mkfile {
+			name := ""
+			for _, char := range LOG.LogNombre {
+				if char != 0 {
+					name += string(char)
+				}
+			}
+			cont := ""
+			for _, char := range LOG.LogContenido {
+				if char != 0 {
+					cont += string(char)
+				}
+			}
+			MKFILE(id, name, true, "", cont, false)
 		} else {
-
+			break
 		}
 	}
 	return true
@@ -1379,19 +1412,23 @@ func AGGI(cantidad int) string {
 }
 
 //RecorrerYCrearDD Recorre y crea Escrbie el archivo
-func RecorrerYCrearDD(path string, SB Estruct.SuperBoot, FileInfo Estruct.DDInfo, DD Estruct.DD, PosDD int64, cont string) bool {
+func RecorrerYCrearDD(path string, SB Estruct.SuperBoot, FileInfo Estruct.DDInfo, DD Estruct.DD, PosDD int64, cont string, Pregunta bool) bool {
 	DDAux := DD
 	PosDDAux := PosDD
 	for {
 		for key, value := range DDAux.DDarrayFiles {
 			if value.DDfileApInodo > 0 {
 				if value.DDfileNombre == FileInfo.DDfileNombre {
-					Hacer := MensajeConfirmacion("El archivo que intenta escribir ya existe ¿Desea Sobre Escribir el Contenido? [Y/N]: ", "Y")
-					if Hacer == true {
-						SobreEscribirArchivo(path, SB, DDAux, FileInfo.DDfileNombre, PosDDAux, key, cont)
-						return true
+					if Pregunta == true {
+						Hacer := MensajeConfirmacion("El archivo que intenta escribir ya existe ¿Desea Sobre Escribir el Contenido? [Y/N]: ", "Y")
+						if Hacer == true {
+							SobreEscribirArchivo(path, SB, DDAux, FileInfo.DDfileNombre, PosDDAux, key, cont)
+							return true
+						} else {
+							return false
+						}
 					} else {
-						return false
+						SobreEscribirArchivo(path, SB, DDAux, FileInfo.DDfileNombre, PosDDAux, key, cont)
 					}
 				}
 			}
@@ -1439,10 +1476,6 @@ func RecorrerYCrearDD(path string, SB Estruct.SuperBoot, FileInfo Estruct.DDInfo
 						name += string(char)
 					}
 				}
-				hecho = EscribirEnBitacora(path, SB, "MKFILE", 0, name, cont)
-				if hecho == false {
-					colorstring.Println("[red]\tNo queda mas espacio en el log para escribir el registro")
-				}
 				return true
 			}
 		}
@@ -1463,7 +1496,7 @@ func RecorrerYCrearDD(path string, SB Estruct.SuperBoot, FileInfo Estruct.DDInfo
 			WriteDD(path, DDSig, EscribirDD)
 			DDAux.DDapDetalleDirectorio = EscribirDD
 			WriteDD(path, DDAux, PosDDAux)
-			return RecorrerYCrearDD(path, SB, FileInfo, DDSig, EscribirDD, cont)
+			return RecorrerYCrearDD(path, SB, FileInfo, DDSig, EscribirDD, cont, Pregunta)
 		}
 	}
 	return true
@@ -1525,10 +1558,6 @@ func SobreEscribirArchivo(path string, SB Estruct.SuperBoot, DD Estruct.DD, name
 			name2 += string(char)
 		}
 	}
-	hecho = EscribirEnBitacora(path, SB, "MKFILE", 0, name2, cont)
-	if hecho == false {
-		colorstring.Println("[red]\tNo queda mas espacio en el log para escribir el registro")
-	}
 	return true
 }
 
@@ -1560,11 +1589,6 @@ func BorrarFile(path string, Ruta string, SB Estruct.SuperBoot, DD Estruct.DD, P
 	var NAMEEmpty [16]byte
 	DD.DDarrayFiles[keyDDinfor].DDfileNombre = NAMEEmpty
 	WriteDD(path, DD, PosDD)
-	//BITACORA REMOVE
-	hecho := EscribirEnBitacora(path, SB, "RM", 0, Ruta, "")
-	if hecho == false {
-		colorstring.Println("[red]\tNo queda mas espacio en el log para escribir el registro")
-	}
 }
 
 //RecorrerYCrearAVD Recorre y crear la carpeta
@@ -1610,10 +1634,6 @@ func RecorrerYCrearAVD(path string, SB Estruct.SuperBoot, carpetas []string, Ind
 							posWriteUno := SB.Sb_ap_bitmap_arbol_directorio + poslibre
 							//Se escribe uno en el bitmap
 							WriteOneByteUno(path, posWriteUno)
-							hecho := EscribirEnBitacora(path, SB, "MKDIR", 1, carpetas[IndCarp], "")
-							if hecho == false {
-								colorstring.Println("[red]\tNo queda mas espacio en el log para escribir el registro")
-							}
 							IndCarp++
 							return RecorrerYCrearAVD(path, SB, carpetas, IndCarp, CrearTodo, AVDNuevo, posEscribir)
 						} else {
@@ -2196,7 +2216,7 @@ func EscribirEnBitacora(path string, SB Estruct.SuperBoot, LTO string, CA int64,
 	Final := (SB.Sb_ap_log + (SB.Sb_arbol_virtual_count * int64(unsafe.Sizeof(Estruct.Bitacora{})))) - int64(unsafe.Sizeof(Estruct.Bitacora{}))
 	SizeBitacora := int64(unsafe.Sizeof(Estruct.Bitacora{}))
 	var i int64
-	var libre [16]byte
+	var libre [100]byte
 	for i = Inicio; i <= Final; i = i + SizeBitacora {
 		log, _ := ReadLog(path, i)
 		if log.LogNombre == libre {

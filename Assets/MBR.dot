@@ -1,0 +1,118 @@
+digraph g{
+		node [shape=plain]
+				a0 [label=<
+		 <TABLE>
+			<TR>
+				<TD colspan="2">MBR</TD>
+			</TR>
+		  
+			<TR>
+			<TD >SIZE</TD>
+			<TD>2097152</TD>
+			</TR>
+		  
+		
+			<TR>
+			<TD >FECHA CREACION</TD>
+			<TD>2020-09-13 11:56</TD>
+			</TR>
+		
+			<TR>
+			<TD >SIGNATURE</TD>
+			<TD>267</TD>
+			</TR>
+			<TR>
+		<TD colspan="2">PARTICION 1</TD>
+		</TR>
+		<TR>
+		<TD >NAME</TD>
+		<TD>PARTICION1</TD>
+		</TR>
+		<TR>
+		<TD >STATUS</TD>
+		<TD>A</TD>
+		</TR>
+		<TR>
+		<TD >TYPE</TD>
+		<TD>P</TD>
+		</TR>
+		<TR>
+		<TD >START</TD>
+		<TD>192</TD>
+		</TR>
+		<TR>
+		<TD >SIZE</TD>
+		<TD>1048576</TD>
+		</TR>
+		<TR>
+		<TD colspan="2">PARTICION 2</TD>
+		</TR>
+		<TR>
+		<TD >NAME</TD>
+		<TD>PARTICION2</TD>
+		</TR>
+		<TR>
+		<TD >STATUS</TD>
+		<TD>A</TD>
+		</TR>
+		<TR>
+		<TD >TYPE</TD>
+		<TD>E</TD>
+		</TR>
+		<TR>
+		<TD >START</TD>
+		<TD>1048768</TD>
+		</TR>
+		<TR>
+		<TD >SIZE</TD>
+		<TD>204800</TD>
+		</TR>
+		<TR>
+		<TD colspan="2">PARTICION 3</TD>
+		</TR>
+		<TR>
+		<TD >NAME</TD>
+		<TD>PARTICION3</TD>
+		</TR>
+		<TR>
+		<TD >STATUS</TD>
+		<TD>A</TD>
+		</TR>
+		<TR>
+		<TD >TYPE</TD>
+		<TD>P</TD>
+		</TR>
+		<TR>
+		<TD >START</TD>
+		<TD>1253568</TD>
+		</TR>
+		<TR>
+		<TD >SIZE</TD>
+		<TD>409600</TD>
+		</TR>
+		<TR>
+		<TD colspan="2">PARTICION 4</TD>
+		</TR>
+		<TR>
+		<TD >NAME</TD>
+		<TD>PARTICION4</TD>
+		</TR>
+		<TR>
+		<TD >STATUS</TD>
+		<TD>A</TD>
+		</TR>
+		<TR>
+		<TD >TYPE</TD>
+		<TD>P</TD>
+		</TR>
+		<TR>
+		<TD >START</TD>
+		<TD>1663168</TD>
+		</TR>
+		<TR>
+		<TD >SIZE</TD>
+		<TD>204800</TD>
+		</TR>
+		</TABLE>
+	>];
+	}

@@ -100,7 +100,7 @@ func Parser(Comando string) bool {
 				path = strings.TrimSpace(strings.Split(value, "->")[1])
 			}
 		}
-		return RMDISK(path)
+		return RMDISK(removeCom(path))
 	} else if strings.ToUpper(SourceSplit[i]) == "FDISK" {
 		var path, size, unit, tipe, fit, delete, name, add string = "", "", "", "", "", "", "", ""
 		contain := false
@@ -142,7 +142,7 @@ func Parser(Comando string) bool {
 				add = strings.TrimSpace(strings.Split(value, "->")[1])
 			}
 		}
-		return FDISK(path, size, unit, tipe, fit, delete, name, add)
+		return FDISK(removeCom(path), size, unit, tipe, fit, delete, removeCom(name), add)
 	} else if strings.ToUpper(SourceSplit[i]) == "MOUNT" {
 		var path, name string = "", ""
 		for _, value := range SourceSplit {
@@ -155,7 +155,7 @@ func Parser(Comando string) bool {
 				name = removeCom(strings.TrimSpace(strings.Split(value, "->")[1]))
 			}
 		}
-		return MOUNT(strings.TrimSpace(path), strings.ToUpper(strings.TrimSpace(name)))
+		return MOUNT(removeCom(strings.TrimSpace(path)), removeCom(strings.ToUpper(strings.TrimSpace(name))))
 	} else if strings.ToUpper(SourceSplit[i]) == "UNMOUNT" {
 		var id []string
 		for _, value := range SourceSplit {
@@ -225,7 +225,7 @@ func Parser(Comando string) bool {
 				p = true
 			}
 		}
-		hecho := MKDIR(id, path, p)
+		hecho := MKDIR(id, removeCom(path), p)
 		if hecho == true {
 			colorstring.Println("[blue]\tArchivo creado con exito")
 		}
@@ -256,7 +256,7 @@ func Parser(Comando string) bool {
 				p = true
 			}
 		}
-		hecho := MKFILE(id, path, p, size, cont)
+		hecho := MKFILE(id, removeCom(path), p, size, cont,true)
 		if hecho == true {
 			colorstring.Println("[blue]\tArchivo creado con exito")
 		}
@@ -273,6 +273,10 @@ func Parser(Comando string) bool {
 			if contain == true {
 				nombre = strings.TrimSpace(strings.Split(value, "->")[1])
 			}
+			contain = strings.Contains(strings.ToUpper(value), "-NAME")
+			if contain == true {
+				nombre = strings.TrimSpace(strings.Split(value, "->")[1])
+			}
 			contain = strings.Contains(strings.ToUpper(value), "-RUTA")
 			if contain == true {
 				ruta = strings.TrimSpace(strings.Split(value, "->")[1])
@@ -282,7 +286,7 @@ func Parser(Comando string) bool {
 				path = strings.TrimSpace(strings.Split(value, "->")[1])
 			}
 		}
-		REP(removeCom(id), strings.TrimSpace(strings.ToUpper(nombre)), strings.TrimSpace(removeCom(path)), strings.TrimSpace(removeCom(ruta)))
+		REP(removeCom(id), removeCom(strings.TrimSpace(strings.ToUpper(nombre))), removeCom(strings.TrimSpace(removeCom(path))), removeCom(strings.TrimSpace(removeCom(ruta))))
 		return true
 	} else if strings.ToUpper(SourceSplit[i]) == "CAT" {
 		var id string = ""
@@ -295,7 +299,7 @@ func Parser(Comando string) bool {
 			}
 			contain = strings.Contains(strings.ToUpper(value), "-FILE")
 			if contain == true {
-				path = append(path, strings.TrimSpace(strings.Split(value, "->")[1]))
+				path = append(path, removeCom(strings.TrimSpace(strings.Split(value, "->")[1])))
 			}
 		}
 		return CAT(path, id)
@@ -334,7 +338,7 @@ func Parser(Comando string) bool {
 				cont = removeCom(strings.TrimSpace(strings.Split(value, "->")[1]))
 			}
 		}
-		return MKFILE(id, path, false, size, cont)
+		return MKFILE(id, removeCom(path), false, size, cont,true)
 	} else if strings.ToUpper(SourceSplit[i]) == "MKGRP" {
 		var id, name string = "", ""
 		var contain bool = false
@@ -349,7 +353,7 @@ func Parser(Comando string) bool {
 			}
 
 		}
-		return MKGRP(id, name)
+		return MKGRP(id, removeCom(name))
 	} else if strings.ToUpper(SourceSplit[i]) == "RMGRP" {
 		var id, name string = "", ""
 		var contain bool = false
@@ -364,7 +368,7 @@ func Parser(Comando string) bool {
 			}
 
 		}
-		return RMGRP(id, name)
+		return RMGRP(id, removeCom(name))
 	} else if strings.ToUpper(SourceSplit[i]) == "MKUSR" {
 		var id, user, password, grupo string = "", "", "", ""
 		var contain bool = false
@@ -419,7 +423,7 @@ func Parser(Comando string) bool {
 				dest = removeCom(strings.TrimSpace(strings.Split(value, "->")[1]))
 			}
 		}
-		return CP(id, path, dest)
+		return CP(id, removeCom(path), removeCom(dest))
 	} else if strings.ToUpper(SourceSplit[i]) == "MV" {
 		var id, path, idDestiny, dest string = "", "", "", ""
 		var contain bool = false
@@ -442,7 +446,7 @@ func Parser(Comando string) bool {
 				}
 			}
 		}
-		return MV(id, idDestiny, path, dest)
+		return MV(id, idDestiny, removeCom(path), removeCom(dest))
 	} else if strings.ToUpper(SourceSplit[i]) == "FIND" {
 		var id, path, nombre string = "", "", ""
 		var contain bool = false
@@ -459,8 +463,12 @@ func Parser(Comando string) bool {
 			if contain == true {
 				nombre = removeCom(strings.TrimSpace(strings.Split(value, "->")[1]))
 			}
+			contain = strings.Contains(strings.ToUpper(value), "-NAME")
+			if contain == true {
+				nombre = removeCom(strings.TrimSpace(strings.Split(value, "->")[1]))
+			}
 		}
-		return FIND(id, path, nombre)
+		return FIND(id, removeCom(path), removeCom(nombre))
 	} else if strings.ToUpper(SourceSplit[i]) == "LOSS" {
 		var id string = ""
 		var contain bool = false
@@ -472,6 +480,17 @@ func Parser(Comando string) bool {
 
 		}
 		return LOSS(id)
+	} else if strings.ToUpper(SourceSplit[i]) == "RECOVERY" {
+		var id string = ""
+		var contain bool = false
+		for _, value := range SourceSplit {
+			contain = strings.Contains(strings.ToUpper(value), "-ID")
+			if contain == true {
+				id = removeCom(strings.TrimSpace(strings.Split(value, "->")[1]))
+			}
+
+		}
+		return REC(id)
 	} else if strings.ToUpper(SourceSplit[i]) == "REN" {
 		var id, path, nombre string = "", "", ""
 		var contain bool = false
@@ -489,10 +508,10 @@ func Parser(Comando string) bool {
 				nombre = removeCom(strings.TrimSpace(strings.Split(value, "->")[1]))
 			}
 		}
-		return REN(id, path, nombre)
+		return REN(id, removeCom(path), removeCom(nombre))
 	} else {
 		colorstring.Println("[red]El Script No existe")
-		return false
+		return true
 	}
 }
 

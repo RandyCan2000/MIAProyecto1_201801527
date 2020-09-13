@@ -1,5 +1,5 @@
 digraph D {
 node [fontname="Arial"];
-MBR [shape=record label="DCMBR.dsk\n2020-09-08 18:36|{MBR \n 4194304|PART1 \n 1048576|PART2 \n 1048576|PART3 \n 1048576|PART4 \n 1048576}"]
+MBR [shape=record label="Disco1.dsk\n2020-09-13 11:56|{MBR \n 2097152|PARTICION1 \n 1048576|Extendida \nPARTICION2\n204800|{Libre \n 51200|PART6 \n 51200|Libre \n 102400}|PARTICION3 \n 409600|PARTICION4 \n 204800|Libre\n229376}"]
 
 }

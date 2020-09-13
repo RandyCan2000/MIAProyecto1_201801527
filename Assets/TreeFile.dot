@@ -1,5 +1,5 @@
 digraph g{
-		node [shape=plain]AVD0 [label=<
+		node [shape=plain]AVD35 [label=<
 <TABLE BGCOLOR="#E3EE67">
 <TR><TD colspan="8">/</TD></TR>
 <TR>
@@ -25,33 +25,10 @@ digraph g{
 	</TR>
 	</TABLE>
 >];
-AVD1 [label=<
-<TABLE BGCOLOR="#E3EE67">
-<TR><TD colspan="8">Carpeta8</TD></TR>
-<TR>
-	<TD >1</TD>
-	<TD >2</TD>
-	<TD >3</TD>
-	<TD >4</TD>
-	<TD >5</TD>
-	<TD >6</TD>
-	<TD >DD</TD>
-	<TD >SG</TD>
-	</TR>
-  
-	<TR>
-	<TD port="1"></TD>
-	<TD port="2"></TD>
-	<TD port="3"></TD>
-	<TD port="4"></TD>
-	<TD port="5"></TD>
-	<TD port="6"></TD>
-	<TD port="7" bgcolor="skyblue"></TD>
-	<TD port="8" bgcolor="lightgreen"></TD>
-	</TR>
-	</TABLE>
->];
-BLOQUE1 [label=<<TABLE><TR><TD bgcolor="skyblue">File8</TD></TR></TABLE>>];
+BLOQUE1 [label=<<TABLE><TR><TD bgcolor="skyblue">1,G,root
+1,U,root,root,20</TD></TR></TABLE>>];
+BLOQUE2 [label=<<TABLE><TR><TD bgcolor="skyblue">1801527
+</TD></TR></TABLE>>];
 Inodo1 [label=<<TABLE BGCOLOR="#F99381"><TR><TD colspan="2">INODO</TD></TR>
 <TR><TD >1</TD><TD port="1"></TD></TR>
 	<TR><TD >2</TD><TD port="2"></TD></TR>
@@ -59,38 +36,16 @@ Inodo1 [label=<<TABLE BGCOLOR="#F99381"><TR><TD colspan="2">INODO</TD></TR>
 	<TR><TD >4</TD><TD port="4"></TD></TR>
 	<TR><TD >SG</TD><TD port="5" bgcolor="lightgreen"></TD></TR>\n</TABLE>>];
 Inodo1:1->BLOQUE1
-DD2 [label=<
-<TABLE BGCOLOR="#EEAD67">
-<TR><TD colspan="2">DD</TD></TR>
-<TR><TD >1</TD><TD port="1"></TD></TR>
-	<TR><TD >2</TD><TD port="2"></TD></TR>
-	<TR><TD >3</TD><TD port="3">FILE8.txt</TD></TR>
-	<TR><TD >4</TD><TD port="4"></TD></TR>
-	<TR><TD >5</TD><TD port="5"></TD></TR>
-	<TR><TD >SG</TD><TD port="6" bgcolor="lightgreen"></TD></TR>\n</TABLE>
->];
-DD2:3->Inodo1
-DD1 [label=<
-<TABLE BGCOLOR="#EEAD67">
-<TR><TD colspan="2">DD</TD></TR>
-<TR><TD >1</TD><TD port="1"></TD></TR>
-	<TR><TD >2</TD><TD port="2"></TD></TR>
-	<TR><TD >3</TD><TD port="3"></TD></TR>
-	<TR><TD >4</TD><TD port="4"></TD></TR>
-	<TR><TD >5</TD><TD port="5"></TD></TR>
-	<TR><TD >SG</TD><TD port="6" bgcolor="lightgreen"></TD></TR>\n</TABLE>
->];
-DD1:6->DD2
+Inodo1:2->BLOQUE2
 DD0 [label=<
 <TABLE BGCOLOR="#EEAD67">
 <TR><TD colspan="2">DD</TD></TR>
-<TR><TD >1</TD><TD port="1"></TD></TR>
+<TR><TD >1</TD><TD port="1">user.txt</TD></TR>
 	<TR><TD >2</TD><TD port="2"></TD></TR>
 	<TR><TD >3</TD><TD port="3"></TD></TR>
 	<TR><TD >4</TD><TD port="4"></TD></TR>
 	<TR><TD >5</TD><TD port="5"></TD></TR>
 	<TR><TD >SG</TD><TD port="6" bgcolor="lightgreen"></TD></TR>\n</TABLE>
 >];
-DD0:6->DD1
-AVD1:7->DD0
-AVD0:1->AVD1}
+DD0:1->Inodo1
+AVD35:7->DD0}

@@ -1,5 +1,5 @@
 digraph g{
-		node [shape=plain]AVD0 [label=<
+		node [shape=plain]AVD35 [label=<
 <TABLE BGCOLOR="#E3EE67">
 <TR><TD colspan="8">/</TD></TR>
 <TR>
@@ -25,19 +25,19 @@ digraph g{
 	</TR>
 	</TABLE>
 >];
-BLOQUE1 [label=<<TABLE><TR><TD bgcolor="skyblue">1,G,root
+BLOQUE160 [label=<<TABLE><TR><TD bgcolor="skyblue">1,G,root
 1,U,root,root,20</TD></TR></TABLE>>];
-BLOQUE2 [label=<<TABLE><TR><TD bgcolor="skyblue">1801527
+BLOQUE161 [label=<<TABLE><TR><TD bgcolor="skyblue">1801527
 </TD></TR></TABLE>>];
-Inodo1 [label=<<TABLE BGCOLOR="#F99381"><TR><TD colspan="2">INODO</TD></TR>
+Inodo49 [label=<<TABLE BGCOLOR="#F99381"><TR><TD colspan="2">INODO</TD></TR>
 <TR><TD >1</TD><TD port="1"></TD></TR>
 	<TR><TD >2</TD><TD port="2"></TD></TR>
 	<TR><TD >3</TD><TD port="3"></TD></TR>
 	<TR><TD >4</TD><TD port="4"></TD></TR>
 	<TR><TD >SG</TD><TD port="5" bgcolor="lightgreen"></TD></TR>\n</TABLE>>];
-Inodo1:1->BLOQUE1
-Inodo1:2->BLOQUE2
-DD0 [label=<
+Inodo49:1->BLOQUE160
+Inodo49:2->BLOQUE161
+DD8 [label=<
 <TABLE BGCOLOR="#EEAD67">
 <TR><TD colspan="2">DD</TD></TR>
 <TR><TD >1</TD><TD port="1">user.txt</TD></TR>
@@ -47,5 +47,5 @@ DD0 [label=<
 	<TR><TD >5</TD><TD port="5"></TD></TR>
 	<TR><TD >SG</TD><TD port="6" bgcolor="lightgreen"></TD></TR>\n</TABLE>
 >];
-DD0:1->Inodo1
-AVD0:7->DD0}
+DD8:1->Inodo49
+AVD35:7->DD8}

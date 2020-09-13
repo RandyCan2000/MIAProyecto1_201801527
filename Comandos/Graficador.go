@@ -203,6 +203,7 @@ func LOG(path string, SB Estruct.SuperBoot, pathSalida string, Extension string)
 	file, errFile := os.Create("Assets/Bitacora.dot")
 	if errFile != nil {
 		log.Fatal(errFile)
+		return false
 	}
 	table := `<TR>
 	<TD colspan="5">BITACORA</TD>
@@ -224,7 +225,7 @@ func LOG(path string, SB Estruct.SuperBoot, pathSalida string, Extension string)
 	Final := (SB.Sb_ap_log + (SB.Sb_arbol_virtual_count * int64(unsafe.Sizeof(Estruct.Bitacora{})))) - int64(unsafe.Sizeof(Estruct.Bitacora{}))
 	SizeBitacora := int64(unsafe.Sizeof(Estruct.Bitacora{}))
 	var i int64
-	var libre [16]byte
+	var libre [100]byte
 	for i = Inicio; i <= Final; i = i + SizeBitacora {
 		log, _ := ReadLog(path, i)
 		if log.LogNombre != libre {
@@ -273,6 +274,119 @@ func LOG(path string, SB Estruct.SuperBoot, pathSalida string, Extension string)
 	file.WriteString("\n}\n")
 	file.Close()
 	Generador("Assets/Bitacora.dot", Extension, pathSalida)
+	return true
+}
+
+//MBRG Graficar MBR en tabla
+func MBRG(path string, SB Estruct.SuperBoot, pathSalida string, Extension string) bool {
+	os.MkdirAll("Assets", 0775)
+	file, errFile := os.Create("Assets/MBR.dot")
+	if errFile != nil {
+		log.Fatal(errFile)
+		return false
+	}
+	MBR, _ := ReadMBR(path)
+	var Particion [4]Estruct.Partition
+	Particion[0] = MBR.Mbr_partition_1
+	Particion[1] = MBR.Mbr_partition_2
+	Particion[2] = MBR.Mbr_partition_3
+	Particion[3] = MBR.Mbr_partition_4
+
+	fecha := ""
+
+	for _, char := range MBR.Mbr_fecha_creacion {
+		if char != 0 {
+			fecha += string(char)
+		}
+	}
+
+	var InicioEBR int64 = 0
+
+	file.WriteString(`digraph g{
+		node [shape=plain]
+				a0 [label=<
+		 <TABLE>
+			<TR>
+				<TD colspan="2">MBR</TD>
+			</TR>
+		  
+			<TR>
+			<TD >SIZE</TD>
+			<TD>` + strconv.Itoa(int(MBR.Mbr_tamaño)) + `</TD>
+			</TR>
+		  
+		
+			<TR>
+			<TD >FECHA CREACION</TD>
+			<TD>` + fecha + `</TD>
+			</TR>
+		
+			<TR>
+			<TD >SIGNATURE</TD>
+			<TD>` + strconv.Itoa(int(MBR.Mbr_disk_signature)) + `</TD>
+			</TR>
+			`)
+
+	for key, value := range Particion {
+		if value.Part_type == 'E' {
+			InicioEBR = value.Part_start
+		}
+		file.WriteString(`<TR>
+		<TD colspan="2">PARTICION ` + strconv.Itoa(key+1) + `</TD>
+		</TR>
+		`)
+		name := ""
+		for _, char := range value.Part_name {
+			if char != 0 {
+				name += string(char)
+			}
+		}
+		file.WriteString(`<TR>
+		<TD >NAME</TD>
+		<TD>` + name + `</TD>
+		</TR>
+		`)
+		file.WriteString(`<TR>
+		<TD >STATUS</TD>
+		<TD>` + string(value.Part_status) + `</TD>
+		</TR>
+		`)
+		file.WriteString(`<TR>
+		<TD >TYPE</TD>
+		<TD>` + string(value.Part_type) + `</TD>
+		</TR>
+		`)
+		file.WriteString(`<TR>
+		<TD >START</TD>
+		<TD>` + strconv.Itoa(int(value.Part_start)) + `</TD>
+		</TR>
+		`)
+		file.WriteString(`<TR>
+		<TD >SIZE</TD>
+		<TD>` + strconv.Itoa(int(value.Part_size)) + `</TD>
+		</TR>
+		`)
+	}
+
+	file.WriteString(`</TABLE>
+	>];
+	}`)
+	file.Close()
+	Generador("Assets/MBR.dot", Extension, pathSalida)
+	if InicioEBR != 0 {
+		ebr := Estruct.EBR{}
+		file2, _ := os.Open(path)
+		file2.Seek(InicioEBR, 0)
+		A := ReadBytes(file2, int(unsafe.Sizeof(ebr)))
+		buffer := bytes.NewBuffer(A)
+		err := binary.Read(buffer, binary.BigEndian, &ebr)
+		if err != nil {
+			colorstring.Println("[red]Ocurrio un error al leer el Disco " + err.Error())
+			return false
+		}
+		showLogicRec(file2, ebr)
+		file2.Close()
+	}
 	return true
 }
 

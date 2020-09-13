@@ -246,13 +246,15 @@ func FDISK(path string, size string, unit string, tipe string, fit string, delet
 		return false
 	}
 
-	if strings.TrimSpace(strings.ToUpper(fit)) == "B" || strings.TrimSpace(strings.ToUpper(fit)) == "F" || strings.TrimSpace(strings.ToUpper(fit)) == "W" || strings.TrimSpace(strings.ToUpper(fit)) == "" {
-		if strings.TrimSpace(strings.ToUpper(fit)) == "" {
-			fit = "W"
+	if strings.TrimSpace(strings.ToUpper(fit)) != "" {
+		if strings.TrimSpace(strings.ToUpper(fit))[0] == 'B' || strings.TrimSpace(strings.ToUpper(fit))[0] == 'F' || strings.TrimSpace(strings.ToUpper(fit))[0] == 'W' {
+			fit = string(strings.TrimSpace(strings.ToUpper(fit))[0])
+		} else {
+			colorstring.Println("[red]Valor de fit incorrecto debe ser BF, FF, WF o vacio")
+			return false
 		}
 	} else {
-		colorstring.Println("[red]Valor de fit incorrecto debe ser BF, FF, WF o vacio")
-		return false
+		fit = "W"
 	}
 
 	//Creacion de particiones
@@ -448,6 +450,10 @@ func FDISK(path string, size string, unit string, tipe string, fit string, delet
 	}
 
 	if strings.ToUpper(strings.TrimSpace(delete)) == "FAST" || strings.ToUpper(strings.TrimSpace(delete)) == "FULL" {
+		hecho := MensajeConfirmacion("¿Seguro Desea Eliminar La Particion?[Y/N]: ", "Y")
+		if hecho == false {
+			return true
+		}
 		var partStart int64
 		if mbr.Mbr_partition_1.Part_type == 'E' {
 			partStart = mbr.Mbr_partition_1.Part_start
@@ -468,7 +474,7 @@ func FDISK(path string, size string, unit string, tipe string, fit string, delet
 				mbr.Mbr_partition_1.Part_type = ' '
 				copy(mbr.Mbr_partition_1.Part_name[:], "                ")
 			} else {
-				mbr.Mbr_partition_1 = Estruct.Partition{Part_size: mbr.Mbr_partition_1.Part_size}
+				mbr.Mbr_partition_1 = Estruct.Partition{Part_size: mbr.Mbr_partition_1.Part_size,Part_status:' ',Part_type:' '}
 			}
 			createPartition(file, mbr)
 			colorstring.Println("[green]Eliminado con exito")
@@ -481,7 +487,7 @@ func FDISK(path string, size string, unit string, tipe string, fit string, delet
 				mbr.Mbr_partition_2.Part_type = ' '
 				copy(mbr.Mbr_partition_2.Part_name[:], "                ")
 			} else {
-				mbr.Mbr_partition_2 = Estruct.Partition{Part_size: mbr.Mbr_partition_2.Part_size}
+				mbr.Mbr_partition_2 = Estruct.Partition{Part_size: mbr.Mbr_partition_2.Part_size,Part_status:' ',Part_type:' '}
 			}
 			createPartition(file, mbr)
 			colorstring.Println("[green]Eliminado con exito")
@@ -494,7 +500,7 @@ func FDISK(path string, size string, unit string, tipe string, fit string, delet
 				mbr.Mbr_partition_3.Part_type = ' '
 				copy(mbr.Mbr_partition_3.Part_name[:], "                ")
 			} else {
-				mbr.Mbr_partition_3 = Estruct.Partition{Part_size: mbr.Mbr_partition_3.Part_size}
+				mbr.Mbr_partition_3 = Estruct.Partition{Part_size: mbr.Mbr_partition_3.Part_size,Part_status:' ',Part_type:' '}
 			}
 			createPartition(file, mbr)
 			colorstring.Println("[green]Eliminado con exito")
@@ -507,7 +513,7 @@ func FDISK(path string, size string, unit string, tipe string, fit string, delet
 				mbr.Mbr_partition_4.Part_type = ' '
 				copy(mbr.Mbr_partition_4.Part_name[:], "                ")
 			} else {
-				mbr.Mbr_partition_4 = Estruct.Partition{Part_size: mbr.Mbr_partition_4.Part_size}
+				mbr.Mbr_partition_4 = Estruct.Partition{Part_size: mbr.Mbr_partition_4.Part_size,Part_status:' ',Part_type:' '}
 			}
 			createPartition(file, mbr)
 			colorstring.Println("[green]Eliminado con exito")
@@ -543,6 +549,7 @@ func FDISK(path string, size string, unit string, tipe string, fit string, delet
 			return false
 		}
 	}
+
 	Add, erradd := strconv.Atoi(add)
 	if erradd != nil {
 		colorstring.Println("[red]Add debe ser un numero")
@@ -919,11 +926,34 @@ func RecursivoFindLogic(file *os.File, ebr Estruct.EBR, ebrInsert Estruct.EBR, E
 
 func showLogicRec(file *os.File, ebr Estruct.EBR) {
 	if ebr.Part_next == -1 {
-		println(string(ebr.Part_name[:]))
-		println(ebr.Part_size)
+		colorstring.Println("[blue]----------------------------------------------")
+		colorstring.Println("[yellow]\tNAME  : " + string(ebr.Part_name[:]))
+		colorstring.Println("[yellow]\tFIT   : " + string(ebr.Part_fit))
+		colorstring.Println("[yellow]\tNEXT  : " + strconv.Itoa(int(ebr.Part_next)))
+		colorstring.Println("[yellow]\tSIZE  : " + strconv.Itoa(int(ebr.Part_size)))
+		colorstring.Println("[yellow]\tSTART : " + strconv.Itoa(int(ebr.Part_start)))
+		colorstring.Println("[yellow]\tSTATUS: " + string(ebr.Part_status))
+		colorstring.Println("[blue]----------------------------------------------")
 	} else {
-		println(string(ebr.Part_name[:]))
-		println(ebr.Part_size)
+		if ebr.Part_status == 'A' {
+			colorstring.Println("[blue]----------------------------------------------")
+			colorstring.Println("[yellow]\tNAME  : " + string(ebr.Part_name[:]))
+			colorstring.Println("[yellow]\tFIT   : " + string(ebr.Part_fit))
+			colorstring.Println("[yellow]\tNEXT  : " + strconv.Itoa(int(ebr.Part_next)))
+			colorstring.Println("[yellow]\tSIZE  : " + strconv.Itoa(int(ebr.Part_size)))
+			colorstring.Println("[yellow]\tSTART : " + strconv.Itoa(int(ebr.Part_start)))
+			colorstring.Println("[yellow]\tSTATUS: " + string(ebr.Part_status))
+			colorstring.Println("[blue]----------------------------------------------")
+		} else {
+			colorstring.Println("[blue]----------------------------------------------")
+			colorstring.Println("[yellow]\tNAME  : ")
+			colorstring.Println("[yellow]\tFIT   : ")
+			colorstring.Println("[yellow]\tNEXT  : " + strconv.Itoa(int(ebr.Part_next)))
+			colorstring.Println("[yellow]\tSIZE  : " + strconv.Itoa(int(ebr.Part_size)))
+			colorstring.Println("[yellow]\tSTART : ")
+			colorstring.Println("[yellow]\tSTATUS: ")
+			colorstring.Println("[blue]----------------------------------------------")
+		}
 		file.Seek(ebr.Part_next, 0)
 		ebr2 := Estruct.EBR{}
 		A := ReadBytes(file, int(unsafe.Sizeof(Estruct.EBR{})))

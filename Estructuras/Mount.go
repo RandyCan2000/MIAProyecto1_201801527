@@ -1,7 +1,7 @@
 package Estructuras
 
 var (
-	ABC         string = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	ABC         string = "abcdefghijklmnopqrstuvwxyz"
 	NumeroLetra        = 0
 )
 
